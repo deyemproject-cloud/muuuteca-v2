@@ -16,6 +16,16 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400; }
 #mobile-menu { display: none; }
 #mobile-menu.active { display: flex; }
+.mobile-menu-link {
+  padding: 0.75rem 1.5rem;
+  width: 100%;
+  text-align: center;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+.mobile-menu-link:hover {
+  background-color: rgba(184, 134, 11, 0.1);
+}
 @media (max-width: 768px) {
   .nav-container { left: 0 !important; transform: none !important; width: calc(100% - 2rem) !important; margin: 0 1rem; }
 }
@@ -39,13 +49,13 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 </button>
 </div>
 </nav>
-<div id="mobile-menu" class="fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-md rounded-2xl shadow-xl flex-col items-center py-6 space-y-4 border border-[#534438]/20">
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="index.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Home</a>
-<a class="dark-bronze font-bold border-b-2 border-[#b8860b] pb-1 kinetic-italic" href="chi-siamo.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Chi Siamo</a>
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="menu.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Menu</a>
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="carta-dei-vini.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Carta dei Vini</a>
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="eventi.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Eventi</a>
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Prenotazioni</a>
+<div id="mobile-menu" class="fixed top-24 left-4 right-4 z-[60] bg-[#1c1b1b] backdrop-blur-xl rounded-2xl shadow-2xl flex-col items-center py-4 border border-[#534438]/30 mt-2">
+<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="index.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Home</a>
+<a class="mobile-menu-link dark-bronze font-bold kinetic-italic bg-[#b8860b]/10" href="chi-siamo.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Chi Siamo</a>
+<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="menu.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Menu</a>
+<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="carta-dei-vini.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Carta dei Vini</a>
+<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="eventi.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Eventi</a>
+<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Prenotazioni</a>
 </div>
 
 <header class="relative h-[60vh] w-full flex items-center justify-center overflow-hidden pt-24">
