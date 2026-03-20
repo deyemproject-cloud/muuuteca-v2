@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-secondary-container": "#352900",
+                "surface-container-low": "#1c1b1b",
+                "on-primary": "#241a00",
+                "on-primary-fixed-variant": "#574500",
+                "surface-dim": "#131313",
+                "tertiary-fixed": "#ffddb3",
+                "on-secondary-fixed-variant": "#554424",
+                "on-primary-fixed": "#241a00",
+                "inverse-surface": "#e5e2e1",
+                "on-error-container": "#ffdad6",
+                "on-secondary-fixed": "#261901",
+                "surface-container-lowest": "#0e0e0e",
+                "on-error": "#690005",
+                "on-background": "#e5e2e1",
+                "error": "#ffb4ab",
+                "on-secondary": "#3d2e10",
+                "tertiary-fixed-dim": "#e8c08c",
+                "surface-tint": "#b8860b",
+                "surface-variant": "#353535",
+                "surface-bright": "#393939",
+                "secondary": "#a67c00",
+                "background": "#131313",
+                "tertiary": "#e8c08c",
+                "on-surface": "#e5e2e1",
+                "secondary-fixed": "#f9dfb3",
+                "surface-container": "#20201f",
+                "on-tertiary-fixed": "#291800",
+                "secondary-container": "#574726",
+                "surface": "#131313",
+                "inverse-primary": "#735c00",
+                "primary-fixed": "#ffe088",
+                "on-tertiary-fixed-variant": "#5d4219",
+                "error-container": "#93000a",
+                "surface-container-highest": "#353535",
+                "surface-container-high": "#2a2a2a",
+                "primary-fixed-dim": "#b8860b",
+                "primary-container": "#8b6a08",
+                "primary": "#b8860b",
+                "on-surface-variant": "#d8c2b2",
+                "on-tertiary": "#442b04",
+                "inverse-on-surface": "#313030",
+                "outline": "#a18d7f",
+                "secondary-fixed-dim": "#a67c00",
+                "outline-variant": "#534438",
+                "on-primary-container": "#241a00",
+                "tertiary-container": "#af8b5b",
+                "on-tertiary-container": "#3c2501"
+              },
+              fontFamily: {
+                "headline": ["Montserrat", "sans-serif"],
+                "body": ["Montserrat", "sans-serif"],
+                "label": ["Montserrat", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.05em;
+        }
+        .kinetic-italic {
+            font-style: italic;
+        }
+        .bronze-gradient {
+            background: linear-gradient(135deg, #b8860b 0%, #8b6a08 100%);
+        }
+        .bronze-text-gradient {
+            background: linear-gradient(135deg, #b8860b 0%, #8b6a08 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark-bronze {
+            color: #b8860b;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- Floating Island Header -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 bg-zinc-900/50 backdrop-blur-md rounded-full shadow-[0px_12px_32px_rgba(229,226,225,0.04)] px-8 py-4 flex justify-between items-center transition-all duration-300">
+<div class="text-2xl font-bold italic dark-bronze tracking-[-0.05em]">MuuuTeca</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="dark-bronze font-bold border-b-2 border-[#b8860b] pb-1 kinetic-italic" href="#">Home</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="#">Chi Siamo</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="#">Menu</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="#">Carta dei Vini</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="#">Prenotazioni</a>
+</div>
+<button class="bronze-gradient text-on-primary-container px-6 py-2 rounded-full font-bold italic text-sm hover:scale-[1.05] transition-transform active:scale-95">
+            Book a Table
+        </button>
+</nav>
+<!-- Full-bleed Hero -->
+<header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="L'arte della carne e del vino" class="w-full h-full object-cover opacity-60 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjKzchKDIjgeeI8z4y6-p5jv9smpRJ7FN2wWK-6_CHEnzpXgicXPqnmkPzsz2FL9BkhPXvFMV7PBcFzkiE94ZXmzrYKS1mDju8pcgVKw6m4koQNLtK-nFGLJvsOXDD90BpCnKdkuIjBKnkz9ulNxK4vxR9CvMpw9DGqnvXXRInUm2rRzdD5isv80SUmSyi0eS5AFa3f9v_gvtfKekoFN8ZpYdv3ZMpSRq2yvrnp7mH3Ewbs-o2u7-7b854_0PYAl8ECtGRmxH-9S9a"/>
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-surface"></div>
+</div>
+<div class="relative z-10 text-center px-6 max-w-5xl">
+<p class="uppercase text-primary font-bold tracking-widest text-xs mb-4 italic">Tagli di manzo selezionati, vino di alta qualità</p>
+<h1 class="text-5xl md:text-8xl font-light italic text-on-surface tracking-[-0.05em] mb-6">
+                Il regno della <span class="bronze-text-gradient font-bold">Carne</span> a <span class="bronze-text-gradient font-bold">Pavia</span>
+</h1>
+<p class="text-xl md:text-2xl text-on-surface-variant font-light italic max-w-3xl mx-auto mb-10">
+                Un'atmosfera che ti fa sentire a casa. Dove la tradizione incontra la passione per la <span class="font-bold text-on-surface">Griglia</span>.
+            </p>
+<div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+<button class="bronze-gradient text-on-primary-container px-10 py-4 rounded-full font-bold italic text-lg hover:scale-[1.05] transition-all">
+                    Scopri il Menu
+                </button>
+<button class="bg-surface-container-high/40 backdrop-blur-sm border border-outline-variant/20 px-10 py-4 rounded-full font-bold italic text-lg hover:bg-surface-container-high/60 transition-all">
+                    La Nostra Missione
+                </button>
+</div>
+</div>
+</header>
+<main class="relative z-10 px-6 md:px-20 py-24 space-y-32 bg-surface">
+<!-- La Nostra Missione Section -->
+<section class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-6xl font-light italic tracking-tight">La nostra <span class="text-primary font-bold">Missione</span></h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1: Family & Tradition -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">family_history</span>
+<h3 class="text-2xl font-bold italic mb-4">Radici di Famiglia</h3>
+<p class="text-on-surface-variant font-light italic leading-relaxed">
+                        La Muuuteca è una storia di famiglia. Nasce attorno a una tavola, tra il profumo della brace, un calice di vino sincero e la voglia di condividere momenti autentici a <span class="text-on-surface font-bold">Pavia</span>.
+                    </p>
+</div>
+<!-- Card 2: The Grill -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">outdoor_grill</span>
+<h3 class="text-2xl font-bold italic mb-4">L'Anima della Brace</h3>
+<p class="text-on-surface-variant font-light italic leading-relaxed">
+                        La nostra <span class="text-on-surface font-bold">Passione</span> si esprime attraverso il fuoco vivo. Selezioniamo solo carni di qualità superiore, trattate con rispetto e semplicità per esaltarne l'anima.
+                    </p>
+</div>
+<!-- Card 3: Wine & Selection -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">wine_bar</span>
+<h3 class="text-2xl font-bold italic mb-4">La Cantina Curata</h3>
+<p class="text-on-surface-variant font-light italic leading-relaxed">
+                        Proponiamo una carta vini curata, con etichette italiane e internazionali, piccole cantine e grandi nomi, scelti per esaltare ogni boccone della nostra <span class="text-on-surface font-bold">Carne</span>.
+                    </p>
+</div>
+</div>
+<!-- Detailed Narrative -->
+<div class="mt-16 bg-surface-container-high/30 rounded-2xl p-8 md:p-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<p class="text-lg text-on-surface-variant font-light italic leading-relaxed">
+                            Ogni giorno apriamo le porte anche a chi cerca una <span class="font-bold text-on-surface italic">pausa pranzo a Pavia</span> diversa dal solito: genuina, veloce ma con gusto. La sera, MUUUTECA diventa il posto perfetto per una <span class="font-bold text-on-surface italic">cena a Pavia</span> all'insegna del gusto e della convivialità.
+                        </p>
+<p class="text-lg text-on-surface-variant font-light italic leading-relaxed">
+                            Organizziamo regolarmente <span class="font-bold text-on-surface italic">degustazioni di carne e vino</span>: eventi speciali pensati per esplorare tagli pregiati e tecniche di cottura sorprendenti.
+                        </p>
+<div class="pt-4">
+<p class="text-xl font-bold italic text-primary italic">La Muuuteca – Dove la carne è regina, il vino è complice e l'accoglienza è di casa.</p>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden shadow-2xl">
+<img alt="Il nostro grill" class="w-full h-80 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzsTGdyrv8QsqB5BMOBHDSJk-nOE2knGp9TMdW-D-Vy0Zl2GW8VHkMrHDmStX9-aUaA4VtbONoyIyEJTGB74DO3_Pl6Hj1Z0vGAdPlswzwSmis88PShsYnpLLy7NWsA0ZxVIjF2ligx15TVsZRI8tghivUByQdp5dWpor5B5ivMBwtK2a2B-5sxeupQU4PRdR9bj4A38XRFiZ1t1Ig_yXbxLdOx59LXo8f9o_ucGvtzSDriBV-YnrQ0Qa4qGkq1EoSu9oKqRiBm52A"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Wine & Experience Section -->
+<section class="space-y-12">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="max-w-2xl">
+<h2 class="text-4xl md:text-5xl font-light italic mb-4">Dove la <span class="text-primary font-bold">Carne</span> incontra il <span class="text-primary font-bold">Vino</span></h2>
+<p class="text-lg text-on-surface-variant font-light italic">Un archivio di sapori curato per chi cerca l'eccellenza nel calice e nel piatto.</p>
+</div>
+<a class="text-primary font-bold italic border-b border-primary/40 pb-1 hover:text-primary-fixed transition-colors" href="#">Visualizza la Carta dei Vini →</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="h-64 overflow-hidden">
+<img alt="Riserve Storiche" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfQLAaUIjoMLj_-SurvAByIwhYT8CoZEJrJCKXCwoTItckOBBHHa09XLX7799xUGdjhzLKyqVczrKPPd4Cha3QoJsA8J4AvK5VDZ0RG3OE7NiZRed75MC-CPdJBdca6z5KxwafLyn4_BlHg1ILg-N7w4jT_yxOpcmXZS82EhAzKG0NnTP9JycH_kEDv130PMVXkxwys9eM4i6l5AfXNvgHtMiHxMfwFkhDh91u-jQZsCPksjeyM8P_H0JsDxrnIcXtfaaAXLOzjGDI"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-light italic mb-2">Riserve Storiche</h3>
+<p class="text-on-surface-variant font-light italic text-sm">Etichette d'annata selezionate dai vigneti più prestigiosi d'Italia e del mondo.</p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="h-64 overflow-hidden">
+<img alt="Degustazioni" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvtkbl4SVm_59i4SJ0s3OST5n46uVyIt5aeqttUq26cNxltldcC3PopM_0_WBoiPbZR_X7k3AunAvUk3mSloPxQ49GWYJkDz8gmO1gzt3me6moJmXWfeM1hGj65AzuXJvhyfsc1Gkq27Xg87wC857XZ7Y5h7mAF-r4U1uV9GyMW8SCEXEiSHd_Jkin0GpaqoHof3cmsM698ija3c6uZVZqb4QWH907z99g-zdvcH8TsMDht90HkqAyAJal8yQriXbbilbCaWgjgQvh"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-light italic mb-2">Degustazioni Guidate</h3>
+<p class="text-on-surface-variant font-light italic text-sm">Percorsi sensoriali curati dal nostro sommelier per scoprire nuovi orizzonti.</p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="h-64 overflow-hidden">
+<img alt="Terroir" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2cQbPmQyoJyO9z3-Ka_eioW88tGKLk9wsv4dCMjoKk6Mbmr2ZSAFdokLheUflBhYikz6NYP1u-IZ4jdbmzHUoMlCM_DFyKlWnltxiLZvcaMUv9Mdgc3cSsrreBxUuabXil4mKOH4Vb2LCie4m7JVJmB_8Vgu23vCgAwXXuDZiVpQUOIPEYVVx6ULTdpLo5nd_5C4lqfUHaIM5MA3c4KyjORxeuV_RPcdTsnQDGVcZsPUhhIL-dSNEKKomoUwcF4M7CAYcnfNH8w-8"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-light italic mb-2">Terroir e Territorio</h3>
+<p class="text-on-surface-variant font-light italic text-sm">La celebrazione del legame indissolubile tra la terra e il calice.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Reservation Section -->
+<section class="bg-surface-container-high rounded-xl p-12 md:p-20 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bronze-gradient opacity-10 blur-[100px] -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bronze-gradient opacity-10 blur-[100px] -ml-32 -mb-32"></div>
+<div class="relative z-10 max-w-4xl mx-auto">
+<span class="material-symbols-outlined text-5xl text-primary mb-6">restaurant</span>
+<h2 class="text-4xl md:text-6xl font-light italic mb-8">Prenota il tuo <span class="text-primary font-bold">Tavolo</span></h2>
+<p class="text-xl text-on-surface-variant font-light italic mb-12 leading-relaxed">
+                    Cerchi dove mangiare carne a <span class="font-bold text-on-surface">Pavia</span>? MUUUTECA ti aspetta con <span class="font-bold text-on-surface">griglia</span> accesa e calici pieni. Prenota ora la tua esperienza.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<div class="flex flex-col text-left mb-4 sm:mb-0">
+<span class="text-xs text-zinc-500 italic mb-1">Via Porta Damiani 30, Pavia</span>
+<input class="bg-surface-container-highest border border-outline-variant/20 rounded-full px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary focus:outline-none kinetic-italic" type="date"/>
+</div>
+<div class="flex flex-col items-center justify-end">
+<button class="bronze-gradient text-on-primary-container px-12 py-4 rounded-full font-bold italic text-lg shadow-xl hover:scale-105 transition-all">
+                            Verifica Disponibilità
+                        </button>
+</div>
+</div>
+<div class="mt-8 text-zinc-500 italic text-sm">
+                    Aperto tutti i giorni: 12:00-14:30 / 19:00-23:00 | Tel: 339 27 34159
+                </div>
+</div>
+</section>
+</main>
+<footer class="bg-zinc-900 dark:bg-[#131313] w-full rounded-t-[24px] mt-20 border-t border-outline-variant/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="text-lg font-bold italic dark-bronze mb-2">MuuuTeca Kinetic Archive</div>
+<p class="text-zinc-500 text-sm italic">L'essenza della carne, lo spirito del vino a Pavia.</p>
+</div>
+<div class="flex gap-8 mb-8 md:mb-0">
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors font-['Montserrat'] italic text-sm" href="#">Privacy</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors font-['Montserrat'] italic text-sm" href="#">Terms</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors font-['Montserrat'] italic text-sm" href="#">Eventi</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors font-['Montserrat'] italic text-sm" href="#">Contatti</a>
+</div>
+<div class="text-zinc-500 font-['Montserrat'] italic text-sm">
+                © 2024 MuuuTeca Kinetic Archive. All Rights Reserved.
+            </div>
+</div>
+</footer>
+</body></html>
