@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu - MuuuTeca</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', sans-serif; letter-spacing: -0.05em; }
+.kinetic-italic { font-style: italic; }
+.bronze-gradient { background: linear-gradient(135deg, #b8860b 0%, #8b6a08 100%); }
+.bronze-text-gradient { background: linear-gradient(135deg, #b8860b 0%, #8b6a08 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.dark-bronze { color: #b8860b; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400; }
+</style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 bg-zinc-900/50 backdrop-blur-md rounded-full shadow-[0px_12px_32px_rgba(229,226,225,0.04)] px-8 py-4 flex justify-between items-center">
+<div class="text-2xl font-bold italic dark-bronze tracking-[-0.05em]">MuuuTeca</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="index.html">Home</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="chi-siamo.html">Chi Siamo</a>
+<a class="dark-bronze font-bold border-b-2 border-[#b8860b] pb-1 kinetic-italic" href="menu.html">Menu</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="carta-dei-vini.html">Carta dei Vini</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="prenotazioni.html">Prenotazioni</a>
+</div>
+<a href="prenotazioni.html" class="bronze-gradient text-[#241a00] px-6 py-2 rounded-full font-bold italic text-sm hover:scale-[1.05] transition-transform">Book a Table</a>
+</nav>
+
+<header class="relative h-[50vh] w-full flex items-center justify-center overflow-hidden pt-24">
+<div class="absolute inset-0 z-0">
+<img alt="Menu" class="w-full h-full object-cover opacity-50" src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=1920">
+<div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-[#131313]"></div>
+</div>
+<div class="relative z-10 text-center px-6 max-w-5xl">
+<p class="uppercase text-[#b8860b] font-bold tracking-widest text-xs mb-4 italic">I Nostri Piatti</p>
+<h1 class="text-5xl md:text-7xl font-light italic text-[#e5e2e1] tracking-[-0.05em] mb-6">Il <span class="bronze-text-gradient font-bold">Menu</span></h1>
+<p class="text-xl md:text-2xl text-[#d8c2b2] font-light italic max-w-3xl mx-auto">Carni selezionate, cottura perfetta, sapori autentici</p>
+</div>
+</header>
+
+<main class="relative z-10 px-6 md:px-20 py-24 bg-[#131313]">
+
+<section class="max-w-5xl mx-auto mb-20">
+<div class="flex items-center gap-4 mb-12">
+<span class="material-symbols-outlined text-[#b8860b] text-3xl">restaurant</span>
+<h2 class="text-3xl md:text-4xl font-light italic">Antipasti <span class="text-[#b8860b] font-bold">&</span> Starters</h2>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-start p-6 rounded-xl border-b border-[#534438]/20 hover:bg-[#b8860b]/5 transition-colors">
+<div>
+<h3 class="text-xl font-bold italic mb-2">Tagliere di Salumi e Formaggi</h3>
+<p class="text-[#d8c2b2] font-light italic text-sm">Selezione di affettati stagionati e formaggi artigianali</p>
+</div>
+<span class="text-[#b8860b] font-bold italic text-xl">18 EUR</span>
+</div>
+<div class="flex justify-between items-start p-6 rounded-xl border-b border-[#534438]/20 hover:bg-[#b8860b]/5 transition-colors">
+<div>
+<h3 class="text-xl font-bold italic mb-2">Carpaccio di Manzo</h3>
+<p class="text-[#d8c2b2] font-light italic text-sm">Fettine sottili, rucola, scaglie di grana, olio al tartufo</p>
+</div>
+<span class="text-[#b8860b] font-bold italic text-xl">16 EUR</span>
+</div>
+<div class="flex justify-between items-start p-6 rounded-xl border-b border-[#534438]/20 hover:bg-[#b8860b]/5 transition-colors">
+<div>
+<h3 class="text-xl font-bold italic mb-2">Tartare di Fassona</h3>
+<p class="text-[#d8c2b2] font-light italic text-sm">Manzo piemontese crudo, tuorlo marinato, capperi</p>
+</div>
+<span class="text-[#b8860b] font-bold italic text-xl">20 EUR</span>
+</div>
+</div>
+</section>
+
+<section class="max-w-5xl mx-auto mb-20">
+<div class="flex items-center gap-4 mb-12">
+<span class="material-symbols-outlined text-[#b8860b] text-3xl">local_fire_department</span>
+<h2 class="text-3xl md:text-4xl font-light italic">Le Nostre <span class="text-[#b8860b] font-bold">Carni</span></h2>
+</div>
+<div class="bg-[#1c1b1b] p-8 rounded-2xl border border-[#534438]/10 mb-8">
+<p class="text-[#d8c2b2] font-light italic text-center mb-8">Tutte cotte sulla brace viva di carbone di legna</p>
+<div class="space-y-6">
+<div class="flex justify-between items-start p-6 rounded-xl border-b border-[#534438]/20">
+<div>
+<h3 class="text-xl font-bold italic mb-2">Filetto di Manzo <span class="text-[#b8860b] text-sm">(300g)</span></h3>
+<p class="text-[#d8c2b2] font-light italic text-sm">Taglio pregiato, tenerissimo, consistenza vellutata</p>
+</div>
+<span class="text-[#b8860b] font-bold italic text-xl">32 EUR</span>
+</div>
+<div class="flex justify-between items-start p-6 rounded-xl border-b border-[#534438]/20">
+<div>
+<h3 class="text-xl font-bold italic mb-2">Costata alla Fiorentina <span class="text-[#b8860b] text-sm">(800g)</span></h3>
+<p class="text-[#d8c2b2] font-light italic text-sm">Chianina IGP, altezza minima 3 dita</p>
+</div>
+<span class="text-[#b8860b] font-bold italic text-xl">65 EUR</span>
+</div>
+<div class="flex justify-between items-start p-6 rounded-xl border-b border-[#534438]/20">
+<div>
+<h3 class="text-xl font-bold italic mb-2">Entrecote di Scottona <span class="text-[#b8860b] text-sm">(400g)</span></h3>
+<p class="text-[#d8c2b2] font-light italic text-sm">Giovane heifer, sapore delicato, ottima marbratura</p>
+</div>
+<span class="text-[#b8860b] font-bold italic text-xl">28 EUR</span>
+</div>
+<div class="flex justify-between items-start p-6 rounded-xl border-b border-[#534438]/20">
+<div>
+<h3 class="text-xl font-bold italic mb-2">Tomahawk <span class="text-[#b8860b] text-sm">(1.2kg)</span></h3>
+<p class="text-[#d8c2b2] font-light italic text-sm">Costata con osso, per veri intenditori (min. 2 persone)</p>
+</div>
+<span class="text-[#b8860b] font-bold italic text-xl">85 EUR</span>
+</div>
+<div class="flex justify-between items-start p-6 rounded-xl border-b border-[#534438]/20">
+<div>
+<h3 class="text-xl font-bold italic mb-2">Tagliata di Manzo <span class="text-[#b8860b] text-sm">(500g)</span></h3>
+<p class="text-[#d8c2b2] font-light italic text-sm">Controfiletto, rucola e pomodorini</p>
+</div>
+<span class="text-[#b8860b] font-bold italic text-xl">35 EUR</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-4xl mx-auto text-center">
+<div class="bg-[#2a2a2a]/30 rounded-2xl p-12">
+<h2 class="text-3xl md:text-4xl font-light italic mb-6">Prenota il tuo <span class="text-[#b8860b] font-bold">Tavolo</span></h2>
+<p class="text-[#d8c2b2] font-light italic mb-8">Vieni a gustare i nostri piatti nella calda atmosfera di MuuuTeca</p>
+<a href="prenotazioni.html" class="inline-block bronze-gradient text-[#241a00] px-10 py-4 rounded-full font-bold italic text-lg hover:scale-105 transition-transform">Prenota Ora</a>
+</div>
+</section>
+
+</main>
+
+<footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-[#534438]/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="text-lg font-bold italic text-[#b8860b] mb-2">MuuuTeca</div>
+<p class="text-zinc-500 text-sm italic">L'essenza della carne, lo spirito del vino a Pavia.</p>
+</div>
+<div class="flex gap-8 mb-8 md:mb-0">
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="index.html">Home</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="chi-siamo.html">Chi Siamo</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="carta-dei-vini.html">Vini</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="prenotazioni.html">Prenota</a>
+</div>
+<div class="text-zinc-500 italic text-sm">2024 MuuuTeca. Tutti i diritti riservati.</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prenotazioni - MuuuTeca</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', sans-serif; letter-spacing: -0.05em; }
+.kinetic-italic { font-style: italic; }
+.bronze-gradient { background: linear-gradient(135deg, #b8860b 0%, #8b6a08 100%); }
+.bronze-text-gradient { background: linear-gradient(135deg, #b8860b 0%, #8b6a08 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.dark-bronze { color: #b8860b; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400; }
+input, select, textarea { background-color: #1c1b1b; border: 1px solid #534438; color: #e5e2e1; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b; }
+</style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 bg-zinc-900/50 backdrop-blur-md rounded-full shadow-[0px_12px_32px_rgba(229,226,225,0.04)] px-8 py-4 flex justify-between items-center">
+<div class="text-2xl font-bold italic dark-bronze tracking-[-0.05em]">MuuuTeca</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="index.html">Home</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="chi-siamo.html">Chi Siamo</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="menu.html">Menu</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="carta-dei-vini.html">Carta dei Vini</a>
+<a class="dark-bronze font-bold border-b-2 border-[#b8860b] pb-1 kinetic-italic" href="prenotazioni.html">Prenotazioni</a>
+</div>
+<a href="prenotazioni.html" class="bronze-gradient text-[#241a00] px-6 py-2 rounded-full font-bold italic text-sm hover:scale-[1.05] transition-transform">Book a Table</a>
+</nav>
+
+<header class="relative h-[50vh] w-full flex items-center justify-center overflow-hidden pt-24">
+<div class="absolute inset-0 z-0">
+<img alt="Prenotazioni" class="w-full h-full object-cover opacity-50" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920">
+<div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-[#131313]"></div>
+</div>
+<div class="relative z-10 text-center px-6 max-w-5xl">
+<p class="uppercase text-[#b8860b] font-bold tracking-widest text-xs mb-4 italic">Prenota il tuo tavolo</p>
+<h1 class="text-5xl md:text-7xl font-light italic text-[#e5e2e1] tracking-[-0.05em] mb-6"><span class="bronze-text-gradient font-bold">Prenotazioni</span></h1>
+<p class="text-xl md:text-2xl text-[#d8c2b2] font-light italic max-w-3xl mx-auto">Riserva il tuo posto per un'esperienza indimenticabile</p>
+</div>
+</header>
+
+<main class="relative z-10 px-6 md:px-20 py-24 bg-[#131313]">
+
+<section class="max-w-6xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+<div class="space-y-8">
+<div class="bg-[#1c1b1b] p-8 rounded-2xl border border-[#534438]/10">
+<h2 class="text-3xl font-light italic mb-8">Richiedi una <span class="text-[#b8860b] font-bold">Prenotazione</span></h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-bold italic mb-2">Nome</label>
+<input type="text" class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="Il tuo nome">
+</div>
+<div>
+<label class="block text-sm font-bold italic mb-2">Cognome</label>
+<input type="text" class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="Il tuo cognome">
+</div>
+</div>
+<div>
+<label class="block text-sm font-bold italic mb-2">Email</label>
+<input type="email" class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="tua@email.com">
+</div>
+<div>
+<label class="block text-sm font-bold italic mb-2">Telefono</label>
+<input type="tel" class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="+39 123 456 7890">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-bold italic mb-2">Data</label>
+<input type="date" class="w-full px-4 py-3 rounded-lg kinetic-italic">
+</div>
+<div>
+<label class="block text-sm font-bold italic mb-2">Ora</label>
+<select class="w-full px-4 py-3 rounded-lg kinetic-italic">
+<option>12:00</option>
+<option>12:30</option>
+<option>13:00</option>
+<option>13:30</option>
+<option>19:00</option>
+<option>19:30</option>
+<option>20:00</option>
+<option>20:30</option>
+<option>21:00</option>
+<option>21:30</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-bold italic mb-2">Numero di Persone</label>
+<select class="w-full px-4 py-3 rounded-lg kinetic-italic">
+<option>1 persona</option>
+<option selected>2 persone</option>
+<option>3 persone</option>
+<option>4 persone</option>
+<option>5 persone</option>
+<option>6 persone</option>
+<option>7+ persone (contattarci)</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-bold italic mb-2">Note Speciali</label>
+<textarea rows="4" class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="Allergie, occasioni speciali, richieste particolari..."></textarea>
+</div>
+<button type="submit" class="w-full bronze-gradient text-[#241a00] px-8 py-4 rounded-full font-bold italic text-lg hover:scale-[1.02] transition-transform">
+                            Invia Richiesta
+                        </button>
+</form>
+</div>
+</div>
+
+<div class="space-y-8">
+<div class="bg-[#1c1b1b] p-8 rounded-2xl border border-[#534438]/10">
+<h3 class="text-2xl font-bold italic mb-6">Informazioni</h3>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-[#b8860b] text-2xl mt-1">location_on</span>
+<div>
+<p class="font-bold italic mb-1">Indirizzo</p>
+<p class="text-[#d8c2b2] font-light italic">Via Porta Damiani 30<br>27100 Pavia (PV)</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-[#b8860b] text-2xl mt-1">schedule</span>
+<div>
+<p class="font-bold italic mb-1">Orari</p>
+<p class="text-[#d8c2b2] font-light italic">Pranzo: 12:00 - 14:30<br>Cena: 19:00 - 23:00</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-[#b8860b] text-2xl mt-1">phone</span>
+<div>
+<p class="font-bold italic mb-1">Telefono</p>
+<p class="text-[#d8c2b2] font-light italic">339 27 34159</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-[#2a2a2a]/30 p-8 rounded-2xl">
+<h3 class="text-2xl font-bold italic mb-4">Note Importanti</h3>
+<ul class="space-y-3 text-[#d8c2b2] font-light italic">
+<li class="flex items-start gap-2">
+<span class="text-[#b8860b] mt-1">*</span>
+<span>Per gruppi superiori a 6 persone, contattateci direttamente per disponibilita</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-[#b8860b] mt-1">*</span>
+<span>La prenotazione sara confermata via telefono o email</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-[#b8860b] mt-1">*</span>
+<span>In caso di ritardo superiore a 15 minuti, il tavolo potrebbe essere assegnato</span>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-[#534438]/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="text-lg font-bold italic text-[#b8860b] mb-2">MuuuTeca</div>
+<p class="text-zinc-500 text-sm italic">L'essenza della carne, lo spirito del vino a Pavia.</p>
+</div>
+<div class="flex gap-8 mb-8 md:mb-0">
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="index.html">Home</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="chi-siamo.html">Chi Siamo</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="menu.html">Menu</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="carta-dei-vini.html">Vini</a>
+</div>
+<div class="text-zinc-500 italic text-sm">2024 MuuuTeca. Tutti i diritti riservati.</div>
+</div>
+</footer>
+</body>
+</html>
