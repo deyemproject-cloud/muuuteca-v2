@@ -10,12 +10,12 @@
 <style>
 body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', sans-serif; letter-spacing: -0.05em; }
 .kinetic-italic { font-style: italic; }
-.bronze-gradient { background: linear-gradient(135deg, #b8860b 0%, #8b6a08 100%); }
-.bronze-text-gradient { background: linear-gradient(135deg, #b8860b 0%, #8b6a08 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.dark-bronze { color: #b8860b; }
+.bronze-gradient { background: linear-gradient(135deg, #ffffff 0%, #f0e6d3 50%, #c9a961 100%); }
+.bronze-text-gradient { background: linear-gradient(135deg, #ffffff 0%, #f0e6d3 50%, #c9a961 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.dark-bronze { color: #c9a961; }
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400; }
 input, select, textarea { background-color: #1c1b1b; border: 1px solid #534438; color: #e5e2e1; }
-input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: #c9a961; }
 #mobile-menu { display: none; }
 #mobile-menu.active { display: flex; }
 .mobile-menu-link {
@@ -42,7 +42,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="menu.html">Menu</a>
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="carta-dei-vini.html">Carta dei Vini</a>
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="eventi.html">Eventi</a>
-<a class="dark-bronze font-bold border-b-2 border-[#b8860b] pb-1 kinetic-italic" href="prenotazioni.html">Prenotazioni</a>
+<a class="dark-bronze font-bold border-b-2 border-[#c9a961] pb-1 kinetic-italic" href="prenotazioni.html">Prenotazioni</a>
 </div>
 <div class="flex items-center gap-2 md:gap-4">
 <a href="prenotazioni.html" class="bronze-gradient text-[#241a00] px-3 md:px-6 py-2 rounded-full font-bold italic text-xs md:text-sm hover:scale-[1.05] transition-transform active:scale-95 whitespace-nowrap">Book a Table</a>
@@ -57,7 +57,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b
 <a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="menu.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Menu</a>
 <a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="carta-dei-vini.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Carta dei Vini</a>
 <a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="eventi.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Eventi</a>
-<a class="mobile-menu-link dark-bronze font-bold kinetic-italic bg-[#b8860b]/10" href="prenotazioni.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Prenotazioni</a>
+<a class="mobile-menu-link dark-bronze font-bold kinetic-italic bg-[#c9a961]/10" href="prenotazioni.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Prenotazioni</a>
 </div>
 
 <header class="relative h-[50vh] w-full flex items-center justify-center overflow-hidden pt-24">
@@ -66,7 +66,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b
 <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-[#131313]"></div>
 </div>
 <div class="relative z-10 text-center px-6 max-w-5xl">
-<p class="uppercase text-[#b8860b] font-bold tracking-widest text-xs mb-4 italic">Prenota il tuo tavolo</p>
+<p class="uppercase text-[#c9a961] font-bold tracking-widest text-xs mb-4 italic">Prenota il tuo tavolo</p>
 <h1 class="text-5xl md:text-7xl font-light italic text-[#e5e2e1] tracking-[-0.05em] mb-6"><span class="bronze-text-gradient font-bold">Prenotazioni</span></h1>
 <p class="text-xl md:text-2xl text-[#d8c2b2] font-light italic max-w-3xl mx-auto">Riserva il tuo posto per un'esperienza indimenticabile</p>
 </div>
@@ -79,7 +79,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b
 
 <div class="space-y-8">
 <div class="bg-[#1c1b1b] p-8 rounded-2xl border border-[#534438]/10">
-<h2 class="text-3xl font-light italic mb-8">Richiedi una <span class="text-[#b8860b] font-bold">Prenotazione</span></h2>
+<h2 class="text-3xl font-light italic mb-8">Richiedi una <span class="text-[#c9a961] font-bold">Prenotazione</span></h2>
 <form class="space-y-6">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div>
@@ -148,21 +148,21 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b
 <h3 class="text-2xl font-bold italic mb-6">Informazioni</h3>
 <div class="space-y-6">
 <div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-[#b8860b] text-2xl mt-1">location_on</span>
+<span class="material-symbols-outlined text-[#c9a961] text-2xl mt-1">location_on</span>
 <div>
 <p class="font-bold italic mb-1">Indirizzo</p>
 <p class="text-[#d8c2b2] font-light italic">Via Porta Damiani 30<br>27100 Pavia (PV)</p>
 </div>
 </div>
 <div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-[#b8860b] text-2xl mt-1">schedule</span>
+<span class="material-symbols-outlined text-[#c9a961] text-2xl mt-1">schedule</span>
 <div>
 <p class="font-bold italic mb-1">Orari</p>
 <p class="text-[#d8c2b2] font-light italic">Pranzo: 12:00 - 14:30<br>Cena: 19:00 - 23:00</p>
 </div>
 </div>
 <div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-[#b8860b] text-2xl mt-1">phone</span>
+<span class="material-symbols-outlined text-[#c9a961] text-2xl mt-1">phone</span>
 <div>
 <p class="font-bold italic mb-1">Telefono</p>
 <p class="text-[#d8c2b2] font-light italic">339 27 34159</p>
@@ -175,15 +175,15 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b
 <h3 class="text-2xl font-bold italic mb-4">Note Importanti</h3>
 <ul class="space-y-3 text-[#d8c2b2] font-light italic">
 <li class="flex items-start gap-2">
-<span class="text-[#b8860b] mt-1">*</span>
+<span class="text-[#c9a961] mt-1">*</span>
 <span>Per gruppi superiori a 6 persone, contattateci direttamente per disponibilita</span>
 </li>
 <li class="flex items-start gap-2">
-<span class="text-[#b8860b] mt-1">*</span>
+<span class="text-[#c9a961] mt-1">*</span>
 <span>La prenotazione sara confermata via telefono o email</span>
 </li>
 <li class="flex items-start gap-2">
-<span class="text-[#b8860b] mt-1">*</span>
+<span class="text-[#c9a961] mt-1">*</span>
 <span>In caso di ritardo superiore a 15 minuti, il tavolo potrebbe essere assegnato</span>
 </li>
 </ul>
@@ -198,14 +198,14 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: #b8860b
 <footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-[#534438]/10">
 <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
 <div class="mb-8 md:mb-0">
-<div class="text-lg font-bold italic text-[#b8860b] mb-2">MuuuTeca</div>
+<div class="text-lg font-bold italic text-[#c9a961] mb-2">MuuuTeca</div>
 <p class="text-zinc-500 text-sm italic">L'essenza della carne, lo spirito del vino a Pavia.</p>
 </div>
 <div class="flex gap-8 mb-8 md:mb-0">
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="index.html">Home</a>
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="chi-siamo.html">Chi Siamo</a>
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="menu.html">Menu</a>
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="carta-dei-vini.html">Vini</a>
+<a class="text-zinc-500 hover:text-[#c9a961] transition-colors italic text-sm" href="index.html">Home</a>
+<a class="text-zinc-500 hover:text-[#c9a961] transition-colors italic text-sm" href="chi-siamo.html">Chi Siamo</a>
+<a class="text-zinc-500 hover:text-[#c9a961] transition-colors italic text-sm" href="menu.html">Menu</a>
+<a class="text-zinc-500 hover:text-[#c9a961] transition-colors italic text-sm" href="carta-dei-vini.html">Vini</a>
 </div>
 <div class="text-zinc-500 italic text-sm">2024 MuuuTeca. Tutti i diritti riservati.</div>
 </div>
