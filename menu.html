@@ -95,8 +95,10 @@ html { scroll-behavior: smooth; }
 <body class="antialiased overflow-x-hidden">
 
 <!-- Floating Island Header -->
-<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 bg-zinc-900/50 backdrop-blur-md rounded-full shadow-[0px_12px_32px_rgba(229,226,225,0.04)] px-8 py-4 flex justify-between items-center animate-fade-in">
-<div class="text-2xl font-bold italic dark-bronze tracking-[-0.05em]">MuuuTeca</div>
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 bg-zinc-900/50 backdrop-blur-md rounded-full shadow-[0px_12px_32px_rgba(229,226,225,0.04)] px-4 md:px-8 py-4 flex justify-between items-center animate-fade-in">
+<div class="text-xl md:text-2xl font-bold italic dark-bronze tracking-[-0.05em]">MuuuTeca</div>
+
+<!-- Desktop Nav -->
 <div class="hidden md:flex gap-8 items-center">
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="index.html">Home</a>
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="chi-siamo.html">Chi Siamo</a>
@@ -104,9 +106,28 @@ html { scroll-behavior: smooth; }
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="carta-dei-vini.html">Carta dei Vini</a>
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="prenotazioni.html">Prenotazioni</a>
 </div>
-<button class="bronze-gradient text-on-primary-container px-6 py-2 rounded-full font-bold italic text-sm hover:scale-[1.05] transition-transform active:scale-95">
-Book a Table
+
+<!-- Mobile Burger Button -->
+<button id="header-menu-toggle" class="md:hidden text-zinc-100 p-2" onclick="document.getElementById('header-mobile-menu').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-2xl">menu</span>
 </button>
+
+<!-- Desktop CTA -->
+<a href="prenotazioni.html" class="hidden md:block bronze-gradient text-on-primary-container px-6 py-2 rounded-full font-bold italic text-sm hover:scale-[1.05] transition-transform active:scale-95">
+Book a Table
+</a>
+</nav>
+
+<!-- Mobile Header Dropdown -->
+<div id="header-mobile-menu" class="hidden fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-md rounded-2xl shadow-xl border border-[#534438]/20 md:hidden">
+<div class="flex flex-col py-4">
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="index.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Home</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="chi-siamo.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Chi Siamo</a>
+<a class="py-3 px-6 text-[#c9a961] font-bold bg-zinc-800 kinetic-italic border-b border-zinc-800" href="menu.html">Menu</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="carta-dei-vini.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Carta dei Vini</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Prenotazioni</a>
+<a class="py-3 px-6 text-[#c9a961] font-bold kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Book a Table</a>
+</div>
 </nav>
 
 <!-- Page Header -->
