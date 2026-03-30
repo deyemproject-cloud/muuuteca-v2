@@ -1,199 +1,407 @@
 <!DOCTYPE html>
-<html lang="it">
+<html class="dark" lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carta dei Vini - MuuuTeca</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "on-secondary-container": "#352900",
+        "surface-container-low": "#1c1b1b",
+        "on-primary": "#241a00",
+        "surface-dim": "#131313",
+        "surface-tint": "#c9a961",
+        "surface-variant": "#353535",
+        "secondary": "#a67c00",
+        "background": "#131313",
+        "on-surface": "#e5e2e1",
+        "surface": "#131313",
+        "primary": "#c9a961",
+        "on-surface-variant": "#d8c2b2",
+        "outline": "#a18d7f",
+        "outline-variant": "#534438",
+        "primary-container": "#a68b4b",
+        "surface-container": "#20201f",
+        "surface-container-high": "#2a2a2a",
+        "surface-container-highest": "#353535"
+      },
+      fontFamily: {
+        "headline": ["Montserrat", "sans-serif"],
+        "body": ["Montserrat", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
 <style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
 body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', sans-serif; letter-spacing: -0.05em; }
 .kinetic-italic { font-style: italic; }
-.bronze-gradient { background: linear-gradient(135deg, #ffffff 0%, #f0e6d3 50%, #c9a961 100%); }
-.bronze-text-gradient { background: linear-gradient(135deg, #ffffff 0%, #f0e6d3 50%, #c9a961 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.bronze-gradient { background: linear-gradient(135deg, #c9a961 0%, #a68b4b 100%); }
+.bronze-text-gradient { background: linear-gradient(135deg, #c9a961 0%, #a68b4b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .dark-bronze { color: #c9a961; }
-.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400; }
-#mobile-menu { display: none; }
-#mobile-menu.active { display: flex; }
-.mobile-menu-link {
-  padding: 0.75rem 1.5rem;
-  width: 100%;
-  text-align: center;
-  border-radius: 0.5rem;
-  transition: all 0.2s ease;
+html { scroll-behavior: smooth; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.mobile-menu-link:hover {
-  background-color: rgba(184, 134, 11, 0.1);
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-@media (max-width: 768px) {
-  .nav-container { left: 0 !important; transform: none !important; width: calc(100% - 2rem) !important; margin: 0 1rem; }
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+.animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+.animate-slide-left { animation: slideInLeft 0.5s ease-out forwards; }
+.menu-item { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
+.menu-item:nth-child(1) { animation-delay: 0.1s; }
+.menu-item:nth-child(2) { animation-delay: 0.15s; }
+.menu-item:nth-child(3) { animation-delay: 0.2s; }
+.menu-item:nth-child(4) { animation-delay: 0.25s; }
+.menu-item:nth-child(5) { animation-delay: 0.3s; }
+.menu-item:nth-child(6) { animation-delay: 0.35s; }
+.hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.hover-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(201, 169, 97, 0.1); }
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #c9a961;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
 </style>
 </head>
 <body class="antialiased overflow-x-hidden">
-<nav class="nav-container fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 bg-zinc-900/50 backdrop-blur-md rounded-full shadow-[0px_12px_32px_rgba(229,226,225,0.04)] px-4 md:px-8 py-2 md:py-4 flex justify-between items-center transition-all duration-300">
+
+<!-- Floating Island Header -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 bg-zinc-900/50 backdrop-blur-md rounded-full shadow-[0px_12px_32px_rgba(229,226,225,0.04)] px-4 md:px-8 py-4 flex justify-between items-center animate-fade-in">
 <div class="text-xl md:text-2xl font-bold italic dark-bronze tracking-[-0.05em]">MuuuTeca</div>
+
+<!-- Desktop Nav -->
 <div class="hidden md:flex gap-8 items-center">
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="index.html">Home</a>
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="chi-siamo.html">Chi Siamo</a>
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="menu.html">Menu</a>
 <a class="dark-bronze font-bold border-b-2 border-[#c9a961] pb-1 kinetic-italic" href="carta-dei-vini.html">Carta dei Vini</a>
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="eventi.html">Eventi</a>
 <a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="prenotazioni.html">Prenotazioni</a>
 </div>
-<div class="flex items-center gap-2 md:gap-4">
-<a href="prenotazioni.html" class="bronze-gradient text-[#241a00] px-3 md:px-6 py-2 rounded-full font-bold italic text-xs md:text-sm hover:scale-[1.05] transition-transform active:scale-95 whitespace-nowrap">Book a Table</a>
-<button id="mobile-menu-btn" class="md:hidden text-zinc-100 p-2" onclick="document.getElementById('mobile-menu').classList.toggle('active')">
+
+<!-- Mobile Burger Button -->
+<button id="header-menu-toggle" class="md:hidden text-zinc-100 p-2" onclick="document.getElementById('header-mobile-menu').classList.toggle('hidden')">
 <span class="material-symbols-outlined text-2xl">menu</span>
 </button>
-</div>
+
+<!-- Desktop CTA -->
+<a href="prenotazioni.html" class="hidden md:block bronze-gradient text-on-primary-container px-6 py-2 rounded-full font-bold italic text-sm hover:scale-[1.05] transition-transform active:scale-95">
+Book a Table
+</a>
 </nav>
-<div id="mobile-menu" class="fixed top-20 left-4 right-4 z-[60] bg-[#1c1b1b] backdrop-blur-xl rounded-2xl shadow-2xl flex-col items-center py-4 border border-[#534438]/30">
-<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="index.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Home</a>
-<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="chi-siamo.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Chi Siamo</a>
-<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="menu.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Menu</a>
-<a class="mobile-menu-link dark-bronze font-bold kinetic-italic bg-[#c9a961]/10" href="carta-dei-vini.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Carta dei Vini</a>
-<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="eventi.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Eventi</a>
-<a class="mobile-menu-link text-zinc-400 hover:text-zinc-100 kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('mobile-menu').classList.remove('active')">Prenotazioni</a>
+
+<!-- Mobile Header Dropdown -->
+<div id="header-mobile-menu" class="hidden fixed top-24 left-4 right-4 z-[60] bg-zinc-900/95 backdrop-blur-md rounded-2xl shadow-xl border border-[#534438]/20 md:hidden">
+<div class="flex flex-col py-4">
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="index.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Home</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="chi-siamo.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Chi Siamo</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="menu.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Menu</a>
+<a class="py-3 px-6 text-[#c9a961] font-bold bg-zinc-800 kinetic-italic border-b border-zinc-800" href="carta-dei-vini.html">Carta dei Vini</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Prenotazioni</a>
+<a class="py-3 px-6 text-[#c9a961] font-bold kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Book a Table</a>
+</div>
 </div>
 
-<header class="relative h-[50vh] w-full flex items-center justify-center overflow-hidden pt-24">
-<div class="absolute inset-0 z-0">
-<img alt="Carta dei Vini" class="w-full h-full object-cover opacity-50" src="https://images.unsplash.com/photo-1516594915307-8f9fd0c293c9?w=1920">
-<div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-[#131313]"></div>
-</div>
-<div class="relative z-10 text-center px-6 max-w-5xl">
-<p class="uppercase text-[#c9a961] font-bold tracking-widest text-xs mb-4 italic">La Nostra Selezione</p>
-<h1 class="text-5xl md:text-7xl font-light italic text-[#e5e2e1] tracking-[-0.05em] mb-6">Carta dei <span class="bronze-text-gradient font-bold">Vini</span></h1>
-<p class="text-xl md:text-2xl text-[#d8c2b2] font-light italic max-w-3xl mx-auto">Etichette selezionate per accompagnare al meglio le nostre carni</p>
+<!-- Page Header -->
+<header class="relative pt-32 pb-12 px-6 bg-surface animate-fade-in">
+<div class="container mx-auto max-w-7xl text-center">
+<p class="uppercase text-primary font-bold tracking-widest text-xs mb-4 italic kinetic-italic">La Nostra Selezione</p>
+<h1 class="text-5xl md:text-7xl font-light italic text-on-surface tracking-[-0.05em] mb-6">
+Carta dei <span class="bronze-text-gradient font-bold">Vini</span>
+</h1>
+<p class="text-xl text-on-surface-variant font-light italic max-w-3xl mx-auto kinetic-italic">
+Etichette selezionate per accompagnare al meglio le nostre carni
+</p>
 </div>
 </header>
 
-<main class="relative z-10 px-6 md:px-20 py-24 bg-[#131313]">
+<!-- Wine Navigation -->
+<div class="bg-surface/95 backdrop-blur-md border-y border-outline-variant/10 py-4 px-6 animate-fade-in">
+<div class="container mx-auto max-w-7xl">
+<!-- Mobile Dropdown -->
+<div class="md:hidden">
+<button id="wine-menu-toggle" class="flex items-center justify-between w-full text-on-surface font-bold py-2 px-4 bg-surface-container-high rounded-full" onclick="document.getElementById('mobile-wine-nav').classList.toggle('hidden')">
+<span class="kinetic-italic">Sezioni Vini</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+<div id="mobile-wine-nav" class="hidden mt-2 bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#calici" onclick="document.getElementById('mobile-wine-nav').classList.add('hidden')">Calici</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#bottiglie-rosso" onclick="document.getElementById('mobile-wine-nav').classList.add('hidden')">Bottiglie Rosso</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#bottiglie-bianco" onclick="document.getElementById('mobile-wine-nav').classList.add('hidden')">Bottiglie Bianco</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#vini-esteri" onclick="document.getElementById('mobile-wine-nav').classList.add('hidden')">Vini Esteri</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#bollicine" onclick="document.getElementById('mobile-wine-nav').classList.add('hidden')">Le Nostre Bollicine</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all kinetic-italic" href="#riserve" onclick="document.getElementById('mobile-wine-nav').classList.add('hidden')">Le Nostre Riserve</a>
+</div>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex flex-wrap justify-center gap-3 md:gap-6 text-sm font-medium">
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#calici">Calici</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#bottiglie-rosso">Bottiglie Rosso</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#bottiglie-bianco">Bottiglie Bianco</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#vini-esteri">Vini Esteri</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#bollicine">Le Nostre Bollicine</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#riserve">Le Nostre Riserve</a>
+</div>
+</div>
+</div>
 
-<section class="max-w-5xl mx-auto mb-20">
-<div class="flex items-center gap-4 mb-12">
-<span class="material-symbols-outlined text-[#c9a961] text-3xl">wine_bar</span>
-<h2 class="text-3xl md:text-4xl font-light italic">Vini <span class="text-[#c9a961] font-bold">Rossi</span></h2>
+<main class="bg-surface pb-24">
+
+<!-- CALICI -->
+<section id="calici" class="py-20 px-6">
+<div class="container mx-auto max-w-7xl">
+<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<span class="material-symbols-outlined text-primary text-3xl">wine_bar</span>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Calici</h2>
+<div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
-<div class="space-y-6">
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Barolo DOCG 2019</h3>
-<span class="text-[#c9a961] font-bold italic">85 EUR</span>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+<!-- Rosso -->
+<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Rosso</h4>
+<div class="space-y-3 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">Buttafuoco "Il Cacciatore" Az. Agricola Fiamberti/Maggi/Bosco del Sasso</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€9</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Barbera D'Asti DOC Az. Agricola Gianni Doglia</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€7</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Valpolicella Rio Albo Cà Rugate Vino Biologico</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€8</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Chianti Buccia Nera Sassocupo</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€7</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Syrah IGP Terre Siciliane</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€7.5</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Primitivo delle Mandurie DOCG</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€7.5</span></div>
 </div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Piemonte - Nebbiolo. Strutturato, tannini eleganti, note di rosa e tabacco. Perfetto con Fiorentina.</p>
 </div>
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Brunello di Montalcino 2018</h3>
-<span class="text-[#c9a961] font-bold italic">75 EUR</span>
+
+<!-- Bianco + Rosato + Bollicine -->
+<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Bianco</h4>
+<div class="space-y-3 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">Monsupello "I Germogli Bianchi"</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€8</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Lugana Cà De Frati</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€7.5</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Gewurztraminer DOC VAN Blumen</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€7</span></div>
 </div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Toscana - Sangiovese. Complesso, persistente, sentori di ciliegia sotto spirito e spezie.</p>
+
+<div class="mt-6 pt-6 border-t border-outline-variant/20">
+<h4 class="text-xl font-bold mb-4 text-primary kinetic-italic">Rosato</h4>
+<div class="flex justify-between text-sm"><span class="kinetic-italic">Pinot Nero Vinificato in Rosa Vivace IGP "I Germogli Rosa"</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€8</span></div>
 </div>
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Amarone della Valpolicella 2017</h3>
-<span class="text-[#c9a961] font-bold italic">68 EUR</span>
+
+<div class="mt-6 pt-6 border-t border-outline-variant/20">
+<h4 class="text-xl font-bold mb-4 text-primary kinetic-italic">Bollicine Metodo Classico</h4>
+<div class="flex justify-between text-sm"><span class="kinetic-italic">Metodo Classico Pinot Nero Pas Dosè "Nature"</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€9</span></div>
 </div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Veneto - Corvina, Rondinella. Vino da meditazione, corposo, con note di prugna secca e cioccolato.</p>
+
+<div class="mt-6 pt-6 border-t border-outline-variant/20">
+<h4 class="text-xl font-bold mb-4 text-primary kinetic-italic">Bollicine Metodo Charmat</h4>
+<div class="flex justify-between text-sm"><span class="kinetic-italic">Valdobbiadene DOCG Extra Dry Merotto</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€8</span></div>
 </div>
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Chianti Classico Riserva 2019</h3>
-<span class="text-[#c9a961] font-bold italic">38 EUR</span>
 </div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Toscana - Sangiovese. Equilibrato, versatile, ideale per Tagliata e hamburger.</p>
-</div>
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Primitivo di Manduria 2020</h3>
-<span class="text-[#c9a961] font-bold italic">32 EUR</span>
-</div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Puglia - Primitivo. Intenso, fruttato, con note di mora e liquirizia. Ottimo rapporto qualita-prezzo.</p>
 </div>
 </div>
 </section>
 
-<section class="max-w-5xl mx-auto mb-20">
-<div class="flex items-center gap-4 mb-12">
-<span class="material-symbols-outlined text-[#c9a961] text-3xl">wine_bar</span>
-<h2 class="text-3xl md:text-4xl font-light italic">Vini <span class="text-[#c9a961] font-bold">Bianchi</span></h2>
+<!-- BOTTIGLIE ROSSO -->
+<section id="bottiglie-rosso" class="py-20 px-6 bg-surface-container-low/30">
+<div class="container mx-auto max-w-7xl">
+<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<span class="material-symbols-outlined text-primary text-3xl">wine_bar</span>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Bottiglie <span class="bronze-text-gradient font-bold">Rosso</span></h2>
+<div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
-<div class="space-y-6">
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Sauvignon Blanc 2022</h3>
-<span class="text-[#c9a961] font-bold italic">28 EUR</span>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="space-y-3 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">"Lagrein" DOC Von Blumen</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">"Pinot Nero" DOC Von Blumen</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Bonarda "Vaiolet" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Bonarda "Calcabio" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Barbera "Che Barbera" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Cabernet Sauvignon "Tango Wine" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€27</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Buttafuoco "Abbondanza" F. Maggi</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€23</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Buttafuoco "Il Cacciatore" G. Fiamberti</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Buttafuoco Storico "Vigna Costera" F. Maggi</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€38</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Buttafuoco Storico "Sacca del Prete" G. Fiamberti</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€42</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Buttafuoco Storico Bosco del Sasso 2019</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€40</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Barbera D'Asti DOC Gianni Doglia</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€22</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Nebbiolo Langhe Doc Davide Fregorese</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
 </div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Friuli - Fresco, minerale, note di pesca bianca e fiori di sambuco. Perfetto con antipasti.</p>
 </div>
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Vermentino di Gallura 2021</h3>
-<span class="text-[#c9a961] font-bold italic">26 EUR</span>
+
+<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="space-y-3 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">Valpolicella DOC "Rio Albo" Cà Rugate</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Valpolicella Superiore Ripasso DOC Campo Bastiglia Cà Rugate</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€33</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Chianti Buccia Nera Sassocupo DOCG</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€28</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Rosso di Montalcino Doc 2023</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€30</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Morellino di Scansano DOCG Cerretto Piano</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€28</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Bolgheri Rosso Doc Zizzolo Fornacelle</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€30</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Montepulciano d'Abruzzo BIO DOC Spinelli</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Primitivo di Manduria LIRICA</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Sirah Terre Siciliane IGP BIO Dei Principi di Spadafora</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€29</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Etna DOC Rosso Davide Fragorese</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Cannonau di Sardegna DOC Audarya</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€28</span></div>
 </div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Sardegna - Fruttato, salino, sentori di agrumi e macchia mediterranea.</p>
 </div>
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Chardonnay IGT 2022</h3>
-<span class="text-[#c9a961] font-bold italic">24 EUR</span>
-</div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Toscana - Elegante, leggermente vanigliato, buona acidita. Ottimo con carpaccio.</p>
 </div>
 </div>
 </section>
 
-<section class="max-w-5xl mx-auto mb-20">
-<div class="flex items-center gap-4 mb-12">
-<span class="material-symbols-outlined text-[#c9a961] text-3xl">wine_bar</span>
-<h2 class="text-3xl md:text-4xl font-light italic"><span class="text-[#c9a961] font-bold">Bollicine</span></h2>
+<!-- BOTTIGLIE BIANCO + ROSATO -->
+<section id="bottiglie-bianco" class="py-20 px-6">
+<div class="container mx-auto max-w-7xl">
+<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<span class="material-symbols-outlined text-primary text-3xl">wine_bar</span>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Bottiglie <span class="bronze-text-gradient font-bold">Bianco</span></h2>
+<div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
-<div class="space-y-6">
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Franciacorta Brut DOCG</h3>
-<span class="text-[#c9a961] font-bold italic">48 EUR</span>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="space-y-3 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">Gewurztraminer Alto Adige DOC Von Blumen</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Pinot Nero "I Germoglia Bianchi" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Riesling Prov. Di Pavia IGP Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Lugana DOC Cà Dei Frati</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€30</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Gavi di Gavi DOCG Monchiero Carbone</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Roero Arneis DOCG "Recit" Monchiero Carbone</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Vermentino di Gallura DOCG FUENTANALIRAS</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Falanghina del Cilento San Salvatore</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€28</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Nuragus Audarya</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
 </div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Lombardia - Chardonnay, Pinot Nero. Bollicine fini, struttura elegante, piacevole persistenza.</p>
 </div>
-<div class="bg-[#1c1b1b] p-6 rounded-xl border border-[#534438]/10">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold italic">Prosecco DOCG Valdobbiadene</h3>
-<span class="text-[#c9a961] font-bold italic">22 EUR</span>
+
+<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Rosato</h4>
+<div class="space-y-3 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">Pinot Nero "I Germogli Rosa" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
 </div>
-<p class="text-[#d8c2b2] font-light italic text-sm">Veneto - Glera. Fresco, leggero, note di mela verde e fiori bianchi.</p>
+</div>
 </div>
 </div>
 </section>
 
-<section class="max-w-4xl mx-auto text-center">
-<div class="bg-[#2a2a2a]/30 rounded-2xl p-12">
-<span class="material-symbols-outlined text-5xl text-[#c9a961] mb-6">emoji_events</span>
-<h2 class="text-3xl md:text-4xl font-light italic mb-6">Degustazioni <span class="text-[#c9a961] font-bold">Guidate</span></h2>
-<p class="text-[#d8c2b2] font-light italic mb-8">Organizziamo serate speciali con il nostro sommelier per esplorare abbinamenti carne-vino. Chiedi informazioni in sede o prenota per un'esperienza unica.</p>
-<a href="prenotazioni.html" class="inline-block bronze-gradient text-[#241a00] px-10 py-4 rounded-full font-bold italic text-lg hover:scale-105 transition-transform">Prenota una Degustazione</a>
+<!-- VINI ESTERI -->
+<section id="vini-esteri" class="py-20 px-6 bg-surface-container-low/30">
+<div class="container mx-auto max-w-7xl">
+<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<span class="material-symbols-outlined text-primary text-3xl">public</span>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Vini <span class="bronze-text-gradient font-bold">Esteri</span></h2>
+<div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
+</div>
+
+<div class="max-w-3xl mx-auto">
+<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="space-y-3 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">Chablis Domaine Hamelin Francia</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Bordeaux Chateaux Petit Corbin Despagne H. Cuvelier Et Fils 2020</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€55</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Borgogne Pinot Noir Henri De Villamont</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€45</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">La Garnacha Lo Alto Spagna</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€30</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Eudald Massana Noja Metodo Classico</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€32</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Malbec Elite Argentina</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LE NOSTRE BOLLICINE -->
+<section id="bollicine" class="py-20 px-6">
+<div class="container mx-auto max-w-7xl">
+<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<span class="material-symbols-outlined text-primary text-3xl">local_bar</span>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Le Nostre <span class="bronze-text-gradient font-bold">Bollicine</span></h2>
+<div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
+</div>
+
+<div class="max-w-3xl mx-auto">
+<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="space-y-3 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">Metodo Classico Pinot Nero Pas Dosè "Nature" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€40</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Cava Reserva Brut Nature Eudald Massana Noya (Spagna)</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Metodo Classico Dosaggio Zero DOCG (104 mesi sui lieviti) "OBLIO" Bertè & Corbini</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€60</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Metodo Classico Brut "Cuvee Cà Del Tava"</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€65</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Prosecco Valdobbiadene "Merotto" DOCG Extra Dry</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€25</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Metodo Classico Pinot Nero Pas Dosè "Brut Rosè"</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€40</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Franciacorta Brut DOCG "Alma Assemblage" Bellavista</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€45</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Franciacorta Brut DOCG "Alma Non Dosato" Bellavista</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€50</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LE NOSTRE RISERVE -->
+<section id="riserve" class="py-20 px-6 bg-surface-container-low/30">
+<div class="container mx-auto max-w-7xl">
+<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<span class="material-symbols-outlined text-primary text-3xl">emoji_events</span>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Le Nostre <span class="bronze-text-gradient font-bold">Riserve</span></h2>
+<div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
+</div>
+
+<div class="menu-item bg-surface-container-high rounded-xl p-8 border border-outline-variant/10 hover-lift max-w-5xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+<div class="flex justify-between"><span class="kinetic-italic">Ajanico del Volture Nocte 2019</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Barolo DOCG Cru Davide Fregorese 2019</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€49</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Barbaresco DOCG La Ganghjia 2022</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€45</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Sagrantino di Montefalco DOCG Moretti Omero 2020</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€42</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Mosaico 2008 Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€55</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Amarone della Valpolicella DOC Punta 470 Cà Rugate 2021</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€65</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Brunello di Montalcino Ventolaio 2020</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€60</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Podere La Borla 2019 Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€45</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Flower Von Blumen 2021</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Cipperimerlot Monsupello 2018</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€50</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">I Gelsi 2018 Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€30</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Pinot Nero IGP "3309" 2020 Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€42</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Cabernet Sauvignon "Aplomb" 2019 Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€43</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Chardonnay "Senso" 2020 Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€40</span></div>
+<div class="flex justify-between"><span class="kinetic-italic">Blanc de Noirs Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€65</span></div>
+</div>
+</div>
 </div>
 </section>
 
 </main>
 
-<footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-[#534438]/10">
+<!-- Footer -->
+<footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-outline-variant/10">
 <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
 <div class="mb-8 md:mb-0">
-<div class="text-lg font-bold italic text-[#c9a961] mb-2">MuuuTeca</div>
+<div class="text-lg font-bold italic dark-bronze mb-2">MuuuTeca</div>
 <p class="text-zinc-500 text-sm italic">L'essenza della carne, lo spirito del vino a Pavia.</p>
 </div>
 <div class="flex gap-8 mb-8 md:mb-0">
-<a class="text-zinc-500 hover:text-[#c9a961] transition-colors italic text-sm" href="index.html">Home</a>
-<a class="text-zinc-500 hover:text-[#c9a961] transition-colors italic text-sm" href="chi-siamo.html">Chi Siamo</a>
-<a class="text-zinc-500 hover:text-[#c9a961] transition-colors italic text-sm" href="menu.html">Menu</a>
-<a class="text-zinc-500 hover:text-[#c9a961] transition-colors italic text-sm" href="prenotazioni.html">Prenota</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="index.html">Home</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="chi-siamo.html">Chi Siamo</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="menu.html">Menu</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="carta-dei-vini.html">Carta dei Vini</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="prenotazioni.html">Prenotazioni</a>
 </div>
-<div class="text-zinc-500 italic text-sm">2024 MuuuTeca. Tutti i diritti riservati.</div>
+<div class="text-zinc-500 italic text-sm">© 2024 MuuuTeca. Tutti i diritti riservati.</div>
 </div>
 </footer>
+
 </body>
 </html>
