@@ -6,6 +6,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -119,6 +120,19 @@
                 margin: 0 1rem;
             }
         }
+        /* Page load animation */
+        body { opacity: 0; transition: opacity 0.6s ease; }
+        body.loaded { opacity: 1; }
+        html { scroll-behavior: smooth; }
+        /* Ken Burns hero */
+        @keyframes kenBurns { 0% { transform: scale(1.05); } 100% { transform: scale(1.15); } }
+        .ken-burns { animation: kenBurns 20s ease-in-out alternate infinite; }
+        /* Enhanced hover */
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(201, 169, 97, 0.15); }
+        /* Mobile menu slide */
+        #mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; opacity: 0; transform: translateY(-10px); pointer-events: none; }
+        #mobile-menu.active { opacity: 1; transform: translateY(0); pointer-events: auto; display: flex; }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -157,18 +171,18 @@
 <!-- Full-bleed Hero -->
 <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img alt="L'arte della carne e del vino" class="w-full h-full object-cover opacity-60 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjKzchKDIjgeeI8z4y6-p5jv9smpRJ7FN2wWK-6_CHEnzpXgicXPqnmkPzsz2FL9BkhPXvFMV7PBcFzkiE94ZXmzrYKS1mDju8pcgVKw6m4koQNLtK-nFGLJvsOXDD90BpCnKdkuIjBKnkz9ulNxK4vxR9CvMpw9DGqnvXXRInUm2rRzdD5isv80SUmSyi0eS5AFa3f9v_gvtfKekoFN8ZpYdv3ZMpSRq2yvrnp7mH3Ewbs-o2u7-7b854_0PYAl8ECtGRmxH-9S9a"/>
+<img alt="L'arte della carne e del vino" class="w-full h-full object-cover opacity-60 ken-burns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjKzchKDIjgeeI8z4y6-p5jv9smpRJ7FN2wWK-6_CHEnzpXgicXPqnmkPzsz2FL9BkhPXvFMV7PBcFzkiE94ZXmzrYKS1mDju8pcgVKw6m4koQNLtK-nFGLJvsOXDD90BpCnKdkuIjBKnkz9ulNxK4vxR9CvMpw9DGqnvXXRInUm2rRzdD5isv80SUmSyi0eS5AFa3f9v_gvtfKekoFN8ZpYdv3ZMpSRq2yvrnp7mH3Ewbs-o2u7-7b854_0PYAl8ECtGRmxH-9S9a"/>
 <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-surface"></div>
 </div>
 <div class="relative z-10 text-center px-6 max-w-5xl">
-<p class="uppercase text-primary font-bold tracking-widest text-xs mb-4 italic">Tagli di manzo selezionati, vino di alta qualità</p>
-<h1 class="text-5xl md:text-8xl font-light italic text-on-surface tracking-[-0.05em] mb-6">
+<p class="uppercase text-primary font-bold tracking-widest text-xs mb-4 italic" data-aos="fade-down" data-aos-delay="100">Tagli di manzo selezionati, vino di alta qualità</p>
+<h1 class="text-5xl md:text-8xl font-light italic text-on-surface tracking-[-0.05em] mb-6" data-aos="fade-up" data-aos-delay="200">
                 Il regno della <span class="bronze-text-gradient font-bold">Carne</span> a <span class="bronze-text-gradient font-bold">Pavia</span>
 </h1>
-<p class="text-xl md:text-2xl text-on-surface-variant font-light italic max-w-3xl mx-auto mb-10">
+<p class="text-xl md:text-2xl text-on-surface-variant font-light italic max-w-3xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="400">
                 Un'atmosfera che ti fa sentire a casa. Dove la tradizione incontra la passione per la <span class="font-bold text-on-surface">Griglia</span>.
             </p>
-<div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+<div class="flex flex-col md:flex-row gap-6 justify-center items-center" data-aos="fade-up" data-aos-delay="600">
 <a href="menu.html" class="bronze-gradient text-on-primary-container px-10 py-4 rounded-full font-bold italic text-lg hover:scale-[1.05] transition-all inline-block">
                     Scopri il Menu
                 </a>
@@ -181,12 +195,12 @@
 <main class="relative z-10 px-6 md:px-20 py-24 space-y-32 bg-surface">
 <!-- La Nostra Missione Section -->
 <section class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
+<div class="text-center mb-16" data-aos="fade-up">
 <h2 class="text-4xl md:text-6xl font-light italic tracking-tight">La nostra <span class="text-primary font-bold">Missione</span></h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Card 1: Family & Tradition -->
-<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full">
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full hover-lift" data-aos="fade-up" data-aos-delay="100">
 <span class="material-symbols-outlined text-primary text-4xl mb-6">family_history</span>
 <h3 class="text-2xl font-bold italic mb-4">Radici di Famiglia</h3>
 <p class="text-on-surface-variant font-light italic leading-relaxed">
@@ -194,7 +208,7 @@
                     </p>
 </div>
 <!-- Card 2: The Grill -->
-<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full">
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full hover-lift" data-aos="fade-up" data-aos-delay="200">
 <span class="material-symbols-outlined text-primary text-4xl mb-6">outdoor_grill</span>
 <h3 class="text-2xl font-bold italic mb-4">L'Anima della Brace</h3>
 <p class="text-on-surface-variant font-light italic leading-relaxed">
@@ -202,7 +216,7 @@
                     </p>
 </div>
 <!-- Card 3: Wine & Selection -->
-<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full">
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col h-full hover-lift" data-aos="fade-up" data-aos-delay="300">
 <span class="material-symbols-outlined text-primary text-4xl mb-6">wine_bar</span>
 <h3 class="text-2xl font-bold italic mb-4">La Cantina Curata</h3>
 <p class="text-on-surface-variant font-light italic leading-relaxed">
@@ -211,7 +225,7 @@
 </div>
 </div>
 <!-- Detailed Narrative -->
-<div class="mt-16 bg-surface-container-high/30 rounded-2xl p-8 md:p-12">
+<div class="mt-16 bg-surface-container-high/30 rounded-2xl p-8 md:p-12" data-aos="fade-up" data-aos-delay="100">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <div class="space-y-6">
 <p class="text-lg text-on-surface-variant font-light italic leading-relaxed">
@@ -232,7 +246,7 @@
 </section>
 <!-- Wine & Experience Section -->
 <section class="space-y-12">
-<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6" data-aos="fade-up">
 <div class="max-w-2xl">
 <h2 class="text-4xl md:text-5xl font-light italic mb-4">Dove la <span class="text-primary font-bold">Carne</span> incontra il <span class="text-primary font-bold">Vino</span></h2>
 <p class="text-lg text-on-surface-variant font-light italic">Un archivio di sapori curato per chi cerca l'eccellenza nel calice e nel piatto.</p>
@@ -240,7 +254,7 @@
 <a class="text-primary font-bold italic border-b border-primary/40 pb-1 hover:text-primary-fixed transition-colors" href="carta-dei-vini.html">Visualizza la Carta dei Vini →</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="bg-surface-container-low rounded-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
 <div class="h-64 overflow-hidden">
 <img alt="Riserve Storiche" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfQLAaUIjoMLj_-SurvAByIwhYT8CoZEJrJCKXCwoTItckOBBHHa09XLX7799xUGdjhzLKyqVczrKPPd4Cha3QoJsA8J4AvK5VDZ0RG3OE7NiZRed75MC-CPdJBdca6z5KxwafLyn4_BlHg1ILg-N7w4jT_yxOpcmXZS82EhAzKG0NnTP9JycH_kEDv130PMVXkxwys9eM4i6l5AfXNvgHtMiHxMfwFkhDh91u-jQZsCPksjeyM8P_H0JsDxrnIcXtfaaAXLOzjGDI"/>
 </div>
@@ -249,7 +263,7 @@
 <p class="text-on-surface-variant font-light italic text-sm">Etichette d'annata selezionate dai vigneti più prestigiosi d'Italia e del mondo.</p>
 </div>
 </div>
-<div class="bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="bg-surface-container-low rounded-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
 <div class="h-64 overflow-hidden">
 <img alt="Degustazioni" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvtkbl4SVm_59i4SJ0s3OST5n46uVyIt5aeqttUq26cNxltldcC3PopM_0_WBoiPbZR_X7k3AunAvUk3mSloPxQ49GWYJkDz8gmO1gzt3me6moJmXWfeM1hGj65AzuXJvhyfsc1Gkq27Xg87wC857XZ7Y5h7mAF-r4U1uV9GyMW8SCEXEiSHd_Jkin0GpaqoHof3cmsM698ija3c6uZVZqb4QWH907z99g-zdvcH8TsMDht90HkqAyAJal8yQriXbbilbCaWgjgQvh"/>
 </div>
@@ -258,7 +272,7 @@
 <p class="text-on-surface-variant font-light italic text-sm">Percorsi sensoriali curati dal nostro sommelier per scoprire nuovi orizzonti.</p>
 </div>
 </div>
-<div class="bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="bg-surface-container-low rounded-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
 <div class="h-64 overflow-hidden">
 <img alt="Terroir" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2cQbPmQyoJyO9z3-Ka_eioW88tGKLk9wsv4dCMjoKk6Mbmr2ZSAFdokLheUflBhYikz6NYP1u-IZ4jdbmzHUoMlCM_DFyKlWnltxiLZvcaMUv9Mdgc3cSsrreBxUuabXil4mKOH4Vb2LCie4m7JVJmB_8Vgu23vCgAwXXuDZiVpQUOIPEYVVx6ULTdpLo5nd_5C4lqfUHaIM5MA3c4KyjORxeuV_RPcdTsnQDGVcZsPUhhIL-dSNEKKomoUwcF4M7CAYcnfNH8w-8"/>
 </div>
@@ -270,7 +284,7 @@
 </div>
 </section>
 <!-- CTA Reservation Section -->
-<section class="bg-surface-container-high rounded-xl p-12 md:p-20 text-center relative overflow-hidden">
+<section class="bg-surface-container-high rounded-xl p-12 md:p-20 text-center relative overflow-hidden" data-aos="fade-up">
 <div class="absolute top-0 right-0 w-64 h-64 bronze-gradient opacity-10 blur-[100px] -mr-32 -mt-32"></div>
 <div class="absolute bottom-0 left-0 w-64 h-64 bronze-gradient opacity-10 blur-[100px] -ml-32 -mb-32"></div>
 <div class="relative z-10 max-w-4xl mx-auto">
@@ -296,7 +310,7 @@
 </div>
 </section>
 </main>
-<footer class="bg-zinc-900 dark:bg-[#131313] w-full rounded-t-[24px] mt-20 border-t border-outline-variant/10">
+<footer class="bg-zinc-900 dark:bg-[#131313] w-full rounded-t-[24px] mt-20 border-t border-outline-variant/10" data-aos="fade-up">
 <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
 <div class="mb-8 md:mb-0">
 <div class="text-lg font-bold italic dark-bronze mb-2">MuuuTeca Kinetic Archive</div>
@@ -314,4 +328,11 @@
             </div>
 </div>
 </footer>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.classList.add('loaded');
+  AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
+});
+</script>
 </body></html>

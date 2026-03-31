@@ -7,6 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 <style>
 body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', sans-serif; letter-spacing: -0.05em; }
 .kinetic-italic { font-style: italic; }
@@ -29,6 +30,13 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 @media (max-width: 768px) {
   .nav-container { left: 0 !important; transform: none !important; width: calc(100% - 2rem) !important; margin: 0 1rem; }
 }
+body { opacity: 0; transition: opacity 0.6s ease; }
+body.loaded { opacity: 1; }
+html { scroll-behavior: smooth; }
+.hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.hover-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(201, 169, 97, 0.15); }
+#mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; opacity: 0; transform: translateY(-10px); pointer-events: none; }
+#mobile-menu.active { opacity: 1; transform: translateY(0); pointer-events: auto; display: flex; }
 </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -64,16 +72,16 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-[#131313]"></div>
 </div>
 <div class="relative z-10 text-center px-6 max-w-5xl">
-<p class="uppercase text-[#c9a961] font-bold tracking-widest text-xs mb-4 italic">La Nostra Storia</p>
-<h1 class="text-5xl md:text-7xl font-light italic text-[#e5e2e1] tracking-[-0.05em] mb-6">Radici di <span class="bronze-text-gradient font-bold">Famiglia</span></h1>
-<p class="text-xl md:text-2xl text-[#d8c2b2] font-light italic max-w-3xl mx-auto">Dove la passione per la brace incontra l'arte dell'accoglienza</p>
+<p class="uppercase text-[#c9a961] font-bold tracking-widest text-xs mb-4 italic" data-aos="fade-down" data-aos-delay="100">La Nostra Storia</p>
+<h1 class="text-5xl md:text-7xl font-light italic text-[#e5e2e1] tracking-[-0.05em] mb-6" data-aos="fade-up" data-aos-delay="200">Radici di <span class="bronze-text-gradient font-bold">Famiglia</span></h1>
+<p class="text-xl md:text-2xl text-[#d8c2b2] font-light italic max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="300">Dove la passione per la brace incontra l'arte dell'accoglienza</p>
 </div>
 </header>
 
 <main class="relative z-10 px-6 md:px-20 py-24 space-y-32 bg-[#131313]">
 <section class="max-w-7xl mx-auto">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div class="space-y-8">
+<div class="space-y-8" data-aos="fade-right">
 <div>
 <h2 class="text-4xl md:text-5xl font-light italic mb-6">La Nascita di <span class="text-[#c9a961] font-bold">MuuuTeca</span></h2>
 <p class="text-lg text-[#d8c2b2] font-light italic leading-relaxed mb-6">La MuuuTeca nasce da una passione autentica: quella per la <span class="font-bold text-[#e5e2e1]">carne di qualita</span>, cotta con rispetto sulla brace viva, e per il <span class="font-bold text-[#e5e2e1]">vino</span> che sa raccontare la terra da cui proviene.</p>
@@ -85,7 +93,7 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 <p class="text-[#d8c2b2] font-light italic leading-relaxed">Non inseguiamo le mode. Selezioniamo tagli pregiati, li trattiamo con cura, li serviamo con discrezione. Il nostro e un approccio da "silent maitre d": presente ma mai invadente, attento ai dettagli ma mai sopra le righe.</p>
 </div>
 </div>
-<div class="space-y-6">
+<div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
 <div class="rounded-xl overflow-hidden shadow-2xl">
 <img alt="Il nostro grill" class="w-full h-80 object-cover" src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800">
 </div>
@@ -106,22 +114,22 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 </section>
 
 <section class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
+<div class="text-center mb-16" data-aos="fade-up">
 <h2 class="text-4xl md:text-5xl font-light italic mb-4">I Nostri <span class="text-[#c9a961] font-bold">Valori</span></h2>
 <p class="text-lg text-[#d8c2b2] font-light italic max-w-2xl mx-auto">I pilastri su cui abbiamo costruito la MuuuTeca</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="bg-[#1c1b1b] p-8 rounded-xl border border-[#534438]/10">
+<div class="bg-[#1c1b1b] p-8 rounded-xl border border-[#534438]/10 hover-lift" data-aos="fade-up" data-aos-delay="100">
 <span class="material-symbols-outlined text-[#c9a961] text-4xl mb-6">workspace_premium</span>
 <h3 class="text-2xl font-bold italic mb-4">Qualita Senza Compromessi</h3>
 <p class="text-[#d8c2b2] font-light italic">Selezioniamo solo carni di allevatori affidabili, controlliamo ogni taglio, maturiamo con pazienza.</p>
 </div>
-<div class="bg-[#1c1b1b] p-8 rounded-xl border border-[#534438]/10">
+<div class="bg-[#1c1b1b] p-8 rounded-xl border border-[#534438]/10 hover-lift" data-aos="fade-up" data-aos-delay="200">
 <span class="material-symbols-outlined text-[#c9a961] text-4xl mb-6">groups</span>
 <h3 class="text-2xl font-bold italic mb-4">Accoglienza Autentica</h3>
 <p class="text-[#d8c2b2] font-light italic">Ti faremo sentire a casa. Un sorriso sincero, un consiglio quando serve: l'ospitalita e ascolto.</p>
 </div>
-<div class="bg-[#1c1b1b] p-8 rounded-xl border border-[#534438]/10">
+<div class="bg-[#1c1b1b] p-8 rounded-xl border border-[#534438]/10 hover-lift" data-aos="fade-up" data-aos-delay="300">
 <span class="material-symbols-outlined text-[#c9a961] text-4xl mb-6">emoji_nature</span>
 <h3 class="text-2xl font-bold italic mb-4">Rispetto per la Materia</h3>
 <p class="text-[#d8c2b2] font-light italic">Ogni animale, ogni verdura, ogni bottiglia ha una storia. Noi la onoriamo cucinando con attenzione.</p>
@@ -130,13 +138,13 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 </section>
 
 <section class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
+<div class="text-center mb-16" data-aos="fade-up">
 <p class="uppercase text-[#c9a961] font-bold tracking-widest text-xs mb-4 italic">Un Sogno Diventato Realtà</p>
 <h2 class="text-4xl md:text-5xl font-light italic mb-4">Il Nostro <span class="text-[#c9a961] font-bold">Team</span></h2>
 <p class="text-lg text-[#d8c2b2] font-light italic max-w-2xl mx-auto">Le persone che ogni giorno trasformano la passione in esperienza</p>
 </div>
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group">
+<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group" data-aos="fade-up" data-aos-delay="100">
 <div class="aspect-square bg-[#2a2a2a] flex items-center justify-center overflow-hidden">
 <span class="material-symbols-outlined text-6xl text-[#c9a961]/40 group-hover:text-[#c9a961]/60 transition-colors">person</span>
 </div>
@@ -144,7 +152,7 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 <h3 class="text-lg font-bold italic text-[#e5e2e1]">Antonio</h3>
 </div>
 </div>
-<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group">
+<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group" data-aos="fade-up" data-aos-delay="150">
 <div class="aspect-square bg-[#2a2a2a] flex items-center justify-center overflow-hidden">
 <span class="material-symbols-outlined text-6xl text-[#c9a961]/40 group-hover:text-[#c9a961]/60 transition-colors">person</span>
 </div>
@@ -152,7 +160,7 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 <h3 class="text-lg font-bold italic text-[#e5e2e1]">Marco</h3>
 </div>
 </div>
-<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group">
+<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group" data-aos="fade-up" data-aos-delay="200">
 <div class="aspect-square bg-[#2a2a2a] flex items-center justify-center overflow-hidden">
 <span class="material-symbols-outlined text-6xl text-[#c9a961]/40 group-hover:text-[#c9a961]/60 transition-colors">person</span>
 </div>
@@ -160,7 +168,7 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 <h3 class="text-lg font-bold italic text-[#e5e2e1]">Elena</h3>
 </div>
 </div>
-<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group">
+<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group" data-aos="fade-up" data-aos-delay="250">
 <div class="aspect-square bg-[#2a2a2a] flex items-center justify-center overflow-hidden">
 <span class="material-symbols-outlined text-6xl text-[#c9a961]/40 group-hover:text-[#c9a961]/60 transition-colors">person</span>
 </div>
@@ -168,7 +176,7 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 <h3 class="text-lg font-bold italic text-[#e5e2e1]">Sofia</h3>
 </div>
 </div>
-<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group">
+<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group" data-aos="fade-up" data-aos-delay="300">
 <div class="aspect-square bg-[#2a2a2a] flex items-center justify-center overflow-hidden">
 <span class="material-symbols-outlined text-6xl text-[#c9a961]/40 group-hover:text-[#c9a961]/60 transition-colors">person</span>
 </div>
@@ -176,7 +184,7 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 <h3 class="text-lg font-bold italic text-[#e5e2e1]">Francesco</h3>
 </div>
 </div>
-<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group">
+<div class="bg-[#1c1b1b] rounded-xl overflow-hidden border border-[#534438]/10 text-center group" data-aos="fade-up" data-aos-delay="350">
 <div class="aspect-square bg-[#2a2a2a] flex items-center justify-center overflow-hidden">
 <span class="material-symbols-outlined text-6xl text-[#c9a961]/40 group-hover:text-[#c9a961]/60 transition-colors">person</span>
 </div>
@@ -188,7 +196,7 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 </section>
 
 <section class="max-w-7xl mx-auto">
-<div class="bg-[#2a2a2a]/30 rounded-2xl p-8 md:p-12">
+<div class="bg-[#2a2a2a]/30 rounded-2xl p-8 md:p-12" data-aos="fade-up">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <div class="space-y-8">
 <h2 class="text-4xl md:text-5xl font-light italic">Vieni a <span class="text-[#c9a961] font-bold">Trovarci</span></h2>
@@ -225,7 +233,7 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 </section>
 </main>
 
-<footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-[#534438]/10">
+<footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-[#534438]/10" data-aos="fade-up">
 <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
 <div class="mb-8 md:mb-0">
 <div class="text-lg font-bold italic text-[#c9a961] mb-2">MuuuTeca</div>
@@ -240,5 +248,12 @@ body { background-color: #131313; color: #e5e2e1; font-family: 'Montserrat', san
 <div class="text-zinc-500 italic text-sm">2024 MuuuTeca. Tutti i diritti riservati.</div>
 </div>
 </footer>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.classList.add('loaded');
+  AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
+});
+</script>
 </body>
 </html>

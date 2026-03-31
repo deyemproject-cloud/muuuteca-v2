@@ -7,6 +7,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 <script>
 tailwind.config = {
   darkMode: "class",
@@ -64,13 +65,7 @@ html { scroll-behavior: smooth; }
 .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
 .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
 .animate-slide-left { animation: slideInLeft 0.5s ease-out forwards; }
-.menu-item { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
-.menu-item:nth-child(1) { animation-delay: 0.1s; }
-.menu-item:nth-child(2) { animation-delay: 0.15s; }
-.menu-item:nth-child(3) { animation-delay: 0.2s; }
-.menu-item:nth-child(4) { animation-delay: 0.25s; }
-.menu-item:nth-child(5) { animation-delay: 0.3s; }
-.menu-item:nth-child(6) { animation-delay: 0.35s; }
+/* menu-item animations now handled by AOS */
 .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(201, 169, 97, 0.1); }
 .nav-link { position: relative; }
@@ -85,6 +80,9 @@ html { scroll-behavior: smooth; }
   transition: width 0.3s ease;
 }
 .nav-link:hover::after { width: 100%; }
+/* Page load animation */
+body { opacity: 0; transition: opacity 0.6s ease; }
+body.loaded { opacity: 1; }
 </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -126,7 +124,7 @@ Book a Table
 </div>
 
 <!-- Page Header -->
-<header class="relative pt-32 pb-12 px-6 bg-surface animate-fade-in">
+<header class="relative pt-32 pb-12 px-6 bg-surface" data-aos="fade-up">
 <div class="container mx-auto max-w-7xl text-center">
 <p class="uppercase text-primary font-bold tracking-widest text-xs mb-4 italic kinetic-italic">La Nostra Selezione</p>
 <h1 class="text-5xl md:text-7xl font-light italic text-on-surface tracking-[-0.05em] mb-6">
@@ -139,7 +137,7 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 </header>
 
 <!-- Wine Navigation -->
-<div class="bg-surface/95 backdrop-blur-md border-y border-outline-variant/10 py-4 px-6 animate-fade-in">
+<div class="bg-surface/95 backdrop-blur-md border-y border-outline-variant/10 py-4 px-6" data-aos="fade-down" data-aos-delay="200">
 <div class="container mx-auto max-w-7xl">
 <!-- Mobile Dropdown -->
 <div class="md:hidden">
@@ -173,7 +171,7 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 <!-- CALICI -->
 <section id="calici" class="py-20 px-6">
 <div class="container mx-auto max-w-7xl">
-<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">wine_bar</span>
 <h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Calici</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
@@ -181,7 +179,7 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
 <!-- Rosso -->
-<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Rosso</h4>
 <div class="space-y-3 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">Buttafuoco "Il Cacciatore" Az. Agricola Fiamberti/Maggi/Bosco del Sasso</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€9</span></div>
@@ -194,7 +192,7 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 </div>
 
 <!-- Bianco + Rosato + Bollicine -->
-<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Bianco</h4>
 <div class="space-y-3 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">Monsupello "I Germogli Bianchi"</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€8</span></div>
@@ -224,14 +222,14 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 <!-- BOTTIGLIE ROSSO -->
 <section id="bottiglie-rosso" class="py-20 px-6 bg-surface-container-low/30">
 <div class="container mx-auto max-w-7xl">
-<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">wine_bar</span>
 <h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Bottiglie <span class="bronze-text-gradient font-bold">Rosso</span></h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <div class="space-y-3 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">"Lagrein" DOC Von Blumen</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
 <div class="flex justify-between"><span class="kinetic-italic">"Pinot Nero" DOC Von Blumen</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
@@ -249,7 +247,7 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 </div>
 </div>
 
-<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <div class="space-y-3 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">Valpolicella DOC "Rio Albo" Cà Rugate</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
 <div class="flex justify-between"><span class="kinetic-italic">Valpolicella Superiore Ripasso DOC Campo Bastiglia Cà Rugate</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€33</span></div>
@@ -271,14 +269,14 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 <!-- BOTTIGLIE BIANCO + ROSATO -->
 <section id="bottiglie-bianco" class="py-20 px-6">
 <div class="container mx-auto max-w-7xl">
-<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">wine_bar</span>
 <h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Bottiglie <span class="bronze-text-gradient font-bold">Bianco</span></h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <div class="space-y-3 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">Gewurztraminer Alto Adige DOC Von Blumen</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
 <div class="flex justify-between"><span class="kinetic-italic">Pinot Nero "I Germoglia Bianchi" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
@@ -292,7 +290,7 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 </div>
 </div>
 
-<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Rosato</h4>
 <div class="space-y-3 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">Pinot Nero "I Germogli Rosa" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€26</span></div>
@@ -305,14 +303,14 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 <!-- VINI ESTERI -->
 <section id="vini-esteri" class="py-20 px-6 bg-surface-container-low/30">
 <div class="container mx-auto max-w-7xl">
-<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">public</span>
 <h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Vini <span class="bronze-text-gradient font-bold">Esteri</span></h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="max-w-3xl mx-auto">
-<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <div class="space-y-3 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">Chablis Domaine Hamelin Francia</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
 <div class="flex justify-between"><span class="kinetic-italic">Bordeaux Chateaux Petit Corbin Despagne H. Cuvelier Et Fils 2020</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€55</span></div>
@@ -329,14 +327,14 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 <!-- LE NOSTRE BOLLICINE -->
 <section id="bollicine" class="py-20 px-6">
 <div class="container mx-auto max-w-7xl">
-<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">local_bar</span>
 <h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Le Nostre <span class="bronze-text-gradient font-bold">Bollicine</span></h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="max-w-3xl mx-auto">
-<div class="menu-item bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <div class="space-y-3 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">Metodo Classico Pinot Nero Pas Dosè "Nature" Monsupello</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€40</span></div>
 <div class="flex justify-between"><span class="kinetic-italic">Cava Reserva Brut Nature Eudald Massana Noya (Spagna)</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
@@ -355,13 +353,13 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 <!-- LE NOSTRE RISERVE -->
 <section id="riserve" class="py-20 px-6 bg-surface-container-low/30">
 <div class="container mx-auto max-w-7xl">
-<div class="flex items-center gap-4 mb-12 animate-slide-left">
+<div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">emoji_events</span>
 <h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Le Nostre <span class="bronze-text-gradient font-bold">Riserve</span></h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
-<div class="menu-item bg-surface-container-high rounded-xl p-8 border border-outline-variant/10 hover-lift max-w-5xl mx-auto">
+<div class="bg-surface-container-high rounded-xl p-8 border border-outline-variant/10 hover-lift max-w-5xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
 <div class="flex justify-between"><span class="kinetic-italic">Ajanico del Volture Nocte 2019</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€35</span></div>
 <div class="flex justify-between"><span class="kinetic-italic">Barolo DOCG Cru Davide Fregorese 2019</span><span class="text-primary font-bold ml-4 whitespace-nowrap">€49</span></div>
@@ -386,7 +384,7 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 </main>
 
 <!-- Footer -->
-<footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-outline-variant/10">
+<footer class="bg-zinc-900 w-full rounded-t-[24px] mt-20 border-t border-outline-variant/10" data-aos="fade-up">
 <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
 <div class="mb-8 md:mb-0">
 <div class="text-lg font-bold italic dark-bronze mb-2">MuuuTeca</div>
@@ -403,5 +401,12 @@ Etichette selezionate per accompagnare al meglio le nostre carni
 </div>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.classList.add('loaded');
+  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+});
+</script>
 </body>
 </html>
