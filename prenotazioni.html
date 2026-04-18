@@ -88,7 +88,7 @@ html { scroll-behavior: smooth; }
 <div class="space-y-8" data-aos="fade-right">
 <div class="bg-[#1c1b1b] p-8 rounded-2xl border border-[#534438]/10">
 <h2 class="text-3xl font-light italic mb-8">Richiedi una <span class="text-[#c9a961] font-bold">Prenotazione</span></h2>
-<form id="booking-form" class="space-y-6" onsubmit="sendWhatsApp(event)">
+<form id="booking-form" class="space-y-6" onsubmit="submitBooking(event)">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div>
 <label class="block text-sm font-bold italic mb-2">Nome *</label>
@@ -140,9 +140,10 @@ html { scroll-behavior: smooth; }
 <label class="block text-sm font-bold italic mb-2">Note Speciali</label>
 <textarea id="note" rows="4" class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="Allergie, occasioni speciali, richieste particolari..."></textarea>
 </div>
-<button type="submit" class="w-full bronze-gradient text-[#241a00] px-8 py-4 rounded-full font-bold italic text-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
-<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-Invia su WhatsApp
+<div id="form-message" class="hidden rounded-xl px-4 py-3 text-sm font-medium italic text-center"></div>
+<button id="submit-btn" type="submit" class="w-full bronze-gradient text-[#241a00] px-8 py-4 rounded-full font-bold italic text-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
+  <span class="material-symbols-outlined text-xl">event_available</span>
+  Prenota ora
 </button>
 </form>
 </div>
@@ -222,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
   AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
 });
 
-async function sendWhatsApp(e) {
+async function submitBooking(e) {
   e.preventDefault();
   var nome = document.getElementById('nome').value.trim();
   var cognome = document.getElementById('cognome').value.trim();
@@ -232,48 +233,47 @@ async function sendWhatsApp(e) {
   var persone = document.getElementById('persone').value;
   var note = document.getElementById('note').value.trim();
 
-  // Parse party size from select label (e.g. "2 persone" → 2, "7+ persone..." → 7)
+  var btn = document.getElementById('submit-btn');
+  var msg = document.getElementById('form-message');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">progress_activity</span> Invio in corso...';
+  msg.className = 'hidden rounded-xl px-4 py-3 text-sm font-medium italic text-center';
+
   var partySizeMatch = persone.match(/\d+/);
   var partySize = partySizeMatch ? parseInt(partySizeMatch[0], 10) : 2;
 
-  // Send to CRM in the background (non-blocking)
-  fetch('https://muuuteca-crm.vercel.app/api/reservations/public', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-API-Key': 'muuuteca-crm-secret-f3a8b91c4d7e2026',
-    },
-    body: JSON.stringify({
-      customer_name: nome + ' ' + cognome,
-      phone: telefono,
-      party_size: partySize,
-      date: data,
-      time: ora,
-      special_requests: note || null,
-    }),
-  }).catch(function() {
-    // Silent fail — WhatsApp is the primary channel
-  });
+  try {
+    var res = await fetch('https://muuuteca-crm.vercel.app/api/reservations/public', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': 'muuuteca-crm-secret-f3a8b91c4d7e2026',
+      },
+      body: JSON.stringify({
+        customer_name: nome + ' ' + cognome,
+        phone: telefono,
+        party_size: partySize,
+        date: data,
+        time: ora,
+        special_requests: note || null,
+      }),
+    });
 
-  // Format date as DD/MM/YYYY for WhatsApp message
-  var parts = data.split('-');
-  var dataFormattata = parts[2] + '/' + parts[1] + '/' + parts[0];
-
-  var messaggio = 'Ciao, vorrei prenotare un tavolo presso MuuuTeca.\n\n' +
-    '👤 *Nome:* ' + nome + ' ' + cognome + '\n' +
-    '📞 *Telefono:* ' + telefono + '\n' +
-    '📅 *Data:* ' + dataFormattata + '\n' +
-    '🕐 *Ora:* ' + ora + '\n' +
-    '👥 *Persone:* ' + persone;
-
-  if (note) {
-    messaggio += '\n📝 *Note:* ' + note;
+    if (res.ok) {
+      msg.className = 'rounded-xl px-4 py-3 text-sm font-medium italic text-center bg-green-900/30 text-green-400 border border-green-500/20';
+      msg.textContent = '✓ Richiesta inviata! Ti contatteremo presto per confermare la prenotazione.';
+      document.getElementById('booking-form').reset();
+      btn.innerHTML = '<span class="material-symbols-outlined text-xl">event_available</span> Prenota ora';
+      btn.disabled = false;
+    } else {
+      throw new Error('server error');
+    }
+  } catch (err) {
+    msg.className = 'rounded-xl px-4 py-3 text-sm font-medium italic text-center bg-red-900/30 text-red-400 border border-red-500/20';
+    msg.textContent = '✗ Si è verificato un errore. Riprova o chiamaci al 339 27 34159.';
+    btn.innerHTML = '<span class="material-symbols-outlined text-xl">event_available</span> Prenota ora';
+    btn.disabled = false;
   }
-
-  messaggio += '\n\nGrazie!';
-
-  var url = 'https://wa.me/393392734159?text=' + encodeURIComponent(messaggio);
-  window.open(url, '_blank');
 }
 </script>
 </body>
