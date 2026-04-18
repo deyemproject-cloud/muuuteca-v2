@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
   AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
 });
 
-function sendWhatsApp(e) {
+async function sendWhatsApp(e) {
   e.preventDefault();
   var nome = document.getElementById('nome').value.trim();
   var cognome = document.getElementById('cognome').value.trim();
@@ -232,7 +232,30 @@ function sendWhatsApp(e) {
   var persone = document.getElementById('persone').value;
   var note = document.getElementById('note').value.trim();
 
-  // Format date as DD/MM/YYYY
+  // Parse party size from select label (e.g. "2 persone" → 2, "7+ persone..." → 7)
+  var partySizeMatch = persone.match(/\d+/);
+  var partySize = partySizeMatch ? parseInt(partySizeMatch[0], 10) : 2;
+
+  // Send to CRM in the background (non-blocking)
+  fetch('https://muuuteca-crm.vercel.app/api/reservations/public', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-Key': 'muuuteca-crm-secret-f3a8b91c4d7e2026',
+    },
+    body: JSON.stringify({
+      customer_name: nome + ' ' + cognome,
+      phone: telefono,
+      party_size: partySize,
+      date: data,
+      time: ora,
+      special_requests: note || null,
+    }),
+  }).catch(function() {
+    // Silent fail — WhatsApp is the primary channel
+  });
+
+  // Format date as DD/MM/YYYY for WhatsApp message
   var parts = data.split('-');
   var dataFormattata = parts[2] + '/' + parts[1] + '/' + parts[0];
 
