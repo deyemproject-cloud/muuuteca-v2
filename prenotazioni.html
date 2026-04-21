@@ -101,7 +101,36 @@ html { scroll-behavior: smooth; }
 </div>
 <div>
 <label class="block text-sm font-bold italic mb-2">Telefono *</label>
-<input id="telefono" type="tel" required class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="+39 123 456 7890">
+<div class="flex gap-2">
+<select id="prefisso" class="px-3 py-3 rounded-lg kinetic-italic shrink-0 w-32">
+<option value="+39" selected>🇮🇹 +39</option>
+<option value="+41">🇨🇭 +41</option>
+<option value="+33">🇫🇷 +33</option>
+<option value="+49">🇩🇪 +49</option>
+<option value="+34">🇪🇸 +34</option>
+<option value="+44">🇬🇧 +44</option>
+<option value="+43">🇦🇹 +43</option>
+<option value="+32">🇧🇪 +32</option>
+<option value="+31">🇳🇱 +31</option>
+<option value="+351">🇵🇹 +351</option>
+<option value="+352">🇱🇺 +352</option>
+<option value="+30">🇬🇷 +30</option>
+<option value="+386">🇸🇮 +386</option>
+<option value="+420">🇨🇿 +420</option>
+<option value="+48">🇵🇱 +48</option>
+<option value="+46">🇸🇪 +46</option>
+<option value="+47">🇳🇴 +47</option>
+<option value="+45">🇩🇰 +45</option>
+<option value="+358">🇫🇮 +358</option>
+<option value="+353">🇮🇪 +353</option>
+<option value="+1">🇺🇸 +1</option>
+<option value="+7">🇷🇺 +7</option>
+<option value="+86">🇨🇳 +86</option>
+<option value="+81">🇯🇵 +81</option>
+<option value="+971">🇦🇪 +971</option>
+</select>
+<input id="telefono" type="tel" required class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="333 123 4567">
+</div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div>
@@ -183,6 +212,22 @@ html { scroll-behavior: smooth; }
 </li>
 </ul>
 </div>
+
+<div class="bg-[#1c1b1b] p-8 rounded-2xl border border-[#c9a961]/20 hover-lift">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-[#c9a961] text-3xl">hourglass_top</span>
+<h3 class="text-2xl font-bold italic">Turni del weekend</h3>
+</div>
+<p class="text-[#d8c2b2] font-light italic leading-relaxed">
+Nei <span class="text-[#c9a961] font-bold not-italic">turni serali del weekend</span> la permanenza al tavolo è di <span class="text-[#c9a961] font-bold not-italic">1 ora e 30 minuti</span>.
+</p>
+<p class="text-[#d8c2b2] font-light italic leading-relaxed mt-3">
+Questo ci permette di <span class="text-[#e5e2e1]">organizzare due turni di servizio</span> e accogliere più ospiti nelle serate di maggiore affluenza, garantendo a ciascun tavolo l'attenzione che merita — dall'aperitivo al dessert — senza attese in sala.
+</p>
+<p class="text-[#d8c2b2] font-light italic leading-relaxed mt-3 text-sm">
+Grazie per la comprensione. 🍷
+</p>
+</div>
 </div>
 
 </div>
@@ -260,7 +305,9 @@ async function submitBooking(e) {
   e.preventDefault();
   var nome = document.getElementById('nome').value.trim();
   var cognome = document.getElementById('cognome').value.trim();
-  var telefono = document.getElementById('telefono').value.trim();
+  var prefisso = document.getElementById('prefisso').value;
+  var telefonoLocal = document.getElementById('telefono').value.replace(/\D/g, '');
+  var telefono = prefisso + telefonoLocal;
   var data = document.getElementById('data').value;
   var ora = document.getElementById('ora').value;
   var persone = document.getElementById('persone').value;
