@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Menù - MuuuTeca</title>
+<title data-i18n="page.title">Menù - MuuuTeca</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -88,6 +88,10 @@ html { scroll-behavior: smooth; }
 /* Page load animation */
 body { opacity: 0; transition: opacity 0.6s ease; }
 body.loaded { opacity: 1; }
+
+/* Language toggle */
+.lang-pill { transition: all 0.25s ease; color: #d8c2b2; }
+.lang-pill.active { background: linear-gradient(135deg, #c9a961 0%, #a68b4b 100%); color: #241a00; }
 </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -98,11 +102,11 @@ body.loaded { opacity: 1; }
 
 <!-- Desktop Nav -->
 <div class="hidden md:flex gap-8 items-center">
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="index.html">Home</a>
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="chi-siamo.html">Chi Siamo</a>
-<a class="dark-bronze font-bold border-b-2 border-[#c9a961] pb-1 kinetic-italic" href="menu.html">Menu</a>
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="carta-dei-vini.html">Carta dei Vini</a>
-<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="prenotazioni.html">Prenotazioni</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="index.html" data-i18n="nav.home">Home</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
+<a class="dark-bronze font-bold border-b-2 border-[#c9a961] pb-1 kinetic-italic" href="menu.html" data-i18n="nav.menu">Menu</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="carta-dei-vini.html" data-i18n="nav.wines">Carta dei Vini</a>
+<a class="text-zinc-400 hover:text-zinc-100 transition-colors kinetic-italic" href="prenotazioni.html" data-i18n="nav.reservations">Prenotazioni</a>
 </div>
 
 <!-- Mobile Burger Button -->
@@ -111,7 +115,7 @@ body.loaded { opacity: 1; }
 </button>
 
 <!-- Desktop CTA -->
-<a href="prenotazioni.html" class="hidden md:block bronze-gradient text-on-primary-container px-6 py-2 rounded-full font-bold italic text-sm hover:scale-[1.05] transition-transform active:scale-95">
+<a href="prenotazioni.html" class="hidden md:block bronze-gradient text-on-primary-container px-6 py-2 rounded-full font-bold italic text-sm hover:scale-[1.05] transition-transform active:scale-95" data-i18n="nav.book">
 Book a Table
 </a>
 </nav>
@@ -119,25 +123,33 @@ Book a Table
 <!-- Mobile Header Dropdown -->
 <div id="header-mobile-menu" class="hidden fixed top-24 left-4 right-4 z-[60] bg-zinc-900/95 backdrop-blur-md rounded-2xl shadow-xl border border-[#534438]/20 md:hidden">
 <div class="flex flex-col py-4">
-<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="index.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Home</a>
-<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="chi-siamo.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Chi Siamo</a>
-<a class="py-3 px-6 text-[#c9a961] font-bold bg-zinc-800 kinetic-italic border-b border-zinc-800" href="menu.html">Menu</a>
-<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="carta-dei-vini.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Carta dei Vini</a>
-<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Prenotazioni</a>
-<a class="py-3 px-6 text-[#c9a961] font-bold kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')">Book a Table</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="index.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')" data-i18n="nav.home">Home</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="chi-siamo.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')" data-i18n="nav.about">Chi Siamo</a>
+<a class="py-3 px-6 text-[#c9a961] font-bold bg-zinc-800 kinetic-italic border-b border-zinc-800" href="menu.html" data-i18n="nav.menu">Menu</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="carta-dei-vini.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')" data-i18n="nav.wines">Carta dei Vini</a>
+<a class="py-3 px-6 text-zinc-300 hover:text-[#c9a961] hover:bg-zinc-800 transition-all border-b border-zinc-800 kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')" data-i18n="nav.reservations">Prenotazioni</a>
+<a class="py-3 px-6 text-[#c9a961] font-bold kinetic-italic" href="prenotazioni.html" onclick="document.getElementById('header-mobile-menu').classList.add('hidden')" data-i18n="nav.book">Book a Table</a>
 </div>
 </div>
 
 <!-- Page Header -->
 <header class="relative pt-32 pb-12 px-6 bg-surface" data-aos="fade-up">
 <div class="container mx-auto max-w-7xl text-center">
-<p class="uppercase text-primary font-bold tracking-widest text-xs mb-4 italic kinetic-italic">Il Nostro Menù</p>
+<p class="uppercase text-primary font-bold tracking-widest text-xs mb-4 italic kinetic-italic" data-i18n="header.kicker">Il Nostro Menù</p>
 <h1 class="text-5xl md:text-7xl font-light italic text-on-surface tracking-[-0.05em] mb-6">
-Scopri i nostri <span class="bronze-text-gradient font-bold">Sapori</span>
+<span data-i18n="header.title.before">Scopri i nostri</span> <span class="bronze-text-gradient font-bold" data-i18n="header.title.accent">Sapori</span>
 </h1>
-<p class="text-xl text-on-surface-variant font-light italic max-w-3xl mx-auto kinetic-italic">
+<p class="text-xl text-on-surface-variant font-light italic max-w-3xl mx-auto kinetic-italic" data-i18n="header.subtitle">
 Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'esperienza gastronomica unica a Pavia.
 </p>
+
+<!-- Language Toggle -->
+<div class="flex justify-center mt-8">
+<div class="inline-flex bg-surface-container-low rounded-full border border-outline-variant/20 p-1" role="group" aria-label="Language">
+<button type="button" class="lang-pill px-5 py-2 rounded-full text-sm font-bold italic kinetic-italic" data-lang="it">IT</button>
+<button type="button" class="lang-pill px-5 py-2 rounded-full text-sm font-bold italic kinetic-italic" data-lang="en">EN</button>
+</div>
+</div>
 </div>
 </header>
 
@@ -147,32 +159,32 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <!-- Mobile Dropdown -->
 <div class="md:hidden">
 <button id="menu-toggle" class="flex items-center justify-between w-full text-on-surface font-bold py-2 px-4 bg-surface-container-high rounded-full" onclick="document.getElementById('mobile-menu-nav').classList.toggle('hidden')">
-<span class="kinetic-italic">Sezioni Menu</span>
+<span class="kinetic-italic" data-i18n="sectionsLabel">Sezioni Menu</span>
 <span class="material-symbols-outlined">expand_more</span>
 </button>
 <div id="mobile-menu-nav" class="hidden mt-2 bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#antipasti" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">Antipasti</a>
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#primi" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">Primi</a>
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#tagli" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">I Tagli</a>
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#secondi" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">Secondi</a>
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#contorni" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">Contorni</a>
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#dolci" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">Dolci</a>
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#bevande" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">Bevande</a>
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#amari" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">Amari</a>
-<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all kinetic-italic" href="#allergeni" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')">Allergeni</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#antipasti" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.antipasti">Antipasti</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#primi" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.primi">Primi</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#tagli" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.tagli">I Tagli</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#secondi" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.secondi">Secondi</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#contorni" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.contorni">Contorni</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#dolci" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.dolci">Dolci</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#bevande" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.bevande">Bevande</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all border-b border-outline-variant/10 kinetic-italic" href="#amari" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.amari">Amari</a>
+<a class="block py-3 px-4 text-on-surface/80 hover:text-primary hover:bg-surface-container-high transition-all kinetic-italic" href="#allergeni" onclick="document.getElementById('mobile-menu-nav').classList.add('hidden')" data-i18n="sec.allergeni">Allergeni</a>
 </div>
 </div>
 <!-- Desktop Nav -->
 <div class="hidden md:flex flex-wrap justify-center gap-3 md:gap-6 text-sm font-medium">
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#antipasti">Antipasti</a>
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#primi">Primi</a>
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#tagli">I Tagli</a>
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#secondi">Secondi</a>
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#contorni">Contorni</a>
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#dolci">Dolci</a>
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#bevande">Bevande</a>
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#amari">Amari</a>
-<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#allergeni">Allergeni</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#antipasti" data-i18n="sec.antipasti">Antipasti</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#primi" data-i18n="sec.primi">Primi</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#tagli" data-i18n="sec.tagli">I Tagli</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#secondi" data-i18n="sec.secondi">Secondi</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#contorni" data-i18n="sec.contorni">Contorni</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#dolci" data-i18n="sec.dolci">Dolci</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#bevande" data-i18n="sec.bevande">Bevande</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#amari" data-i18n="sec.amari">Amari</a>
+<a class="nav-link text-on-surface/60 hover:text-primary py-2 px-3 rounded-full hover:bg-surface-container-high transition-all" href="#allergeni" data-i18n="sec.allergeni">Allergeni</a>
 </div>
 </div>
 </div>
@@ -184,34 +196,34 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-6xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">restaurant</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Antipasti</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="sec.antipasti">Antipasti</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 <!-- Tartare -->
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<h3 class="text-2xl font-bold italic mb-2 text-primary kinetic-italic">Le Nostre Tartare Iconiche</h3>
-<p class="text-on-surface-variant text-sm italic mb-6 kinetic-italic">da abbinare con un calice di bollicine</p>
+<h3 class="text-2xl font-bold italic mb-2 text-primary kinetic-italic" data-i18n="ant.tartare.title">Le Nostre Tartare Iconiche</h3>
+<p class="text-on-surface-variant text-sm italic mb-6 kinetic-italic" data-i18n="ant.tartare.sub">da abbinare con un calice di bollicine</p>
 <div class="space-y-4">
 <div class="flex justify-between items-start pb-4 border-b border-outline-variant/10">
 <div>
-<h4 class="font-bold text-lg">La Classica</h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">Con pepe nero, sale, olio EVO e limone</p>
+<h4 class="font-bold text-lg" data-i18n="ant.tartare.classica">La Classica</h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="ant.tartare.classica.desc">Con pepe nero, sale, olio EVO e limone</p>
 </div>
 <span class="text-primary font-bold text-xl">€14</span>
 </div>
 <div class="flex justify-between items-start pb-4 border-b border-outline-variant/10">
 <div>
-<h4 class="font-bold text-lg">La Muuucruda <sup class="text-[10px] text-primary font-normal">3,10</sup></h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">Con sale, pepe nero, cipolla rossa, capperi, senape, tuorlo d'uovo e olio al tartufo</p>
+<h4 class="font-bold text-lg"><span data-i18n="ant.tartare.cruda">La Muuucruda</span> <sup class="text-[10px] text-primary font-normal">3,10</sup></h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="ant.tartare.cruda.desc">Con sale, pepe nero, cipolla rossa, capperi, senape, tuorlo d'uovo e olio al tartufo</p>
 </div>
 <span class="text-primary font-bold text-xl">€20</span>
 </div>
 <div class="flex justify-between items-start">
 <div>
-<h4 class="font-bold text-lg">La Muuurinata</h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">Zucchine marinate, scorza di limone, sale, pepe e olio</p>
+<h4 class="font-bold text-lg" data-i18n="ant.tartare.marinata">La Muuurinata</h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="ant.tartare.marinata.desc">Zucchine marinate, scorza di limone, sale, pepe e olio</p>
 </div>
 <span class="text-primary font-bold text-xl">€16</span>
 </div>
@@ -220,20 +232,20 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 
 <!-- Arrosticini -->
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<h3 class="text-2xl font-bold italic mb-2 text-primary kinetic-italic">Ideali da Condividere</h3>
-<p class="text-on-surface-variant text-sm italic mb-6 kinetic-italic">al centro tavola</p>
+<h3 class="text-2xl font-bold italic mb-2 text-primary kinetic-italic" data-i18n="ant.share.title">Ideali da Condividere</h3>
+<p class="text-on-surface-variant text-sm italic mb-6 kinetic-italic" data-i18n="ant.share.sub">al centro tavola</p>
 <div class="space-y-4">
 <div class="flex justify-between items-start pb-4 border-b border-outline-variant/10">
 <div>
-<h4 class="font-bold text-lg">Arrosticini di Pecora</h4>
-<p class="text-on-surface-variant text-sm">5 pezzi / 10 pezzi</p>
+<h4 class="font-bold text-lg" data-i18n="ant.skewers.lamb">Arrosticini di Pecora</h4>
+<p class="text-on-surface-variant text-sm" data-i18n="ant.skewers.qty">5 pezzi / 10 pezzi</p>
 </div>
 <span class="text-primary font-bold text-sm whitespace-nowrap">€8 / €14</span>
 </div>
 <div class="flex justify-between items-start">
 <div>
-<h4 class="font-bold text-lg">Arrosticini di Black Angus</h4>
-<p class="text-on-surface-variant text-sm">5 pezzi / 10 pezzi</p>
+<h4 class="font-bold text-lg" data-i18n="ant.skewers.angus">Arrosticini di Black Angus</h4>
+<p class="text-on-surface-variant text-sm" data-i18n="ant.skewers.qty">5 pezzi / 10 pezzi</p>
 </div>
 <span class="text-primary font-bold text-sm whitespace-nowrap">€9 / €17</span>
 </div>
@@ -244,22 +256,22 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <!-- Taglieri -->
 <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up" style="animation-delay: 0.2s;">
-<h3 class="text-xl font-bold italic mb-4 text-primary kinetic-italic">L'Angolo del Pascolo <sup class="text-[10px] font-normal">1,7,12</sup></h3>
-<p class="text-on-surface-variant text-sm mb-4 kinetic-italic">Tagliere di salumi (crudo San Daniele stagionato 24 mesi, lardo di Patanegra, coppa di Parma, salame di Varzi) e formaggi (Formaggio Occelli a latte misto affinato nella foglia di castagno, nel Barolo, nel malto d'orzo e whisky, nella grappa con frutta) servito con gnocco fritto</p>
+<h3 class="text-xl font-bold italic mb-4 text-primary kinetic-italic"><span data-i18n="ant.board.pasture">L'Angolo del Pascolo</span> <sup class="text-[10px] font-normal">1,7,12</sup></h3>
+<p class="text-on-surface-variant text-sm mb-4 kinetic-italic" data-i18n="ant.board.pasture.desc">Tagliere di salumi (crudo San Daniele stagionato 24 mesi, lardo di Patanegra, coppa di Parma, salame di Varzi) e formaggi (Formaggio Occelli a latte misto affinato nella foglia di castagno, nel Barolo, nel malto d'orzo e whisky, nella grappa con frutta) servito con gnocco fritto</p>
 <div class="text-right">
 <span class="text-primary font-bold text-2xl">€26</span>
 </div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up" style="animation-delay: 0.25s;">
-<h3 class="text-xl font-bold italic mb-4 text-primary kinetic-italic">Degustazione Tagliere di Formaggi <sup class="text-[10px] font-normal">1,7,12</sup></h3>
-<p class="text-on-surface-variant text-sm mb-4 kinetic-italic">Selezione stagionata (Formaggio Occelli a latte misto affinato nella foglia di castagno, nel Barolo, nel malto d'orzo e whisky, nella grappa con frutta) servito con gnocco fritto e su richiesta confetture</p>
+<h3 class="text-xl font-bold italic mb-4 text-primary kinetic-italic"><span data-i18n="ant.board.cheese">Degustazione Tagliere di Formaggi</span> <sup class="text-[10px] font-normal">1,7,12</sup></h3>
+<p class="text-on-surface-variant text-sm mb-4 kinetic-italic" data-i18n="ant.board.cheese.desc">Selezione stagionata (Formaggio Occelli a latte misto affinato nella foglia di castagno, nel Barolo, nel malto d'orzo e whisky, nella grappa con frutta) servito con gnocco fritto e su richiesta confetture</p>
 <div class="text-right">
 <span class="text-primary font-bold text-2xl">€20</span>
 </div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up" style="animation-delay: 0.3s;">
-<h3 class="text-xl font-bold italic mb-4 text-primary kinetic-italic">Degustazione Tagliere Salumi <sup class="text-[10px] font-normal">1,12</sup></h3>
-<p class="text-on-surface-variant text-sm mb-4 kinetic-italic">Selezione di salumi (crudo San Daniele stagionato 24 mesi, lardo di Patanegra, coppa di Parma, Salame di Varzi) con gnocco fritto</p>
+<h3 class="text-xl font-bold italic mb-4 text-primary kinetic-italic"><span data-i18n="ant.board.charc">Degustazione Tagliere Salumi</span> <sup class="text-[10px] font-normal">1,12</sup></h3>
+<p class="text-on-surface-variant text-sm mb-4 kinetic-italic" data-i18n="ant.board.charc.desc">Selezione di salumi (crudo San Daniele stagionato 24 mesi, lardo di Patanegra, coppa di Parma, Salame di Varzi) con gnocco fritto</p>
 <div class="text-right">
 <span class="text-primary font-bold text-2xl">€18</span>
 </div>
@@ -273,26 +285,26 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-6xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">dinner_dining</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Primi</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="sec.primi">Primi</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
-<p class="text-on-surface-variant text-center mb-8 italic kinetic-italic">Pasta fresca rigorosamente fatta con le nostre mani</p>
+<p class="text-on-surface-variant text-center mb-8 italic kinetic-italic" data-i18n="primi.intro">Pasta fresca rigorosamente fatta con le nostre mani</p>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between mb-4"><h3 class="text-xl font-bold kinetic-italic">Scrigno del Vitello <sup class="text-[10px] text-primary font-normal">1,3,7,9</sup></h3><span class="text-primary font-bold text-xl">€18</span></div>
-<p class="text-on-surface-variant kinetic-italic">Pasta ripiena di vitello, serviti con burro e salvia</p>
+<div class="flex justify-between mb-4"><h3 class="text-xl font-bold kinetic-italic"><span data-i18n="primi.scrigno">Scrigno del Vitello</span> <sup class="text-[10px] text-primary font-normal">1,3,7,9</sup></h3><span class="text-primary font-bold text-xl">€18</span></div>
+<p class="text-on-surface-variant kinetic-italic" data-i18n="primi.scrigno.desc">Pasta ripiena di vitello, serviti con burro e salvia</p>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between mb-4"><h3 class="text-xl font-bold kinetic-italic">Tagliatelle dei Pastori <sup class="text-[10px] text-primary font-normal">1,3,9</sup></h3><span class="text-primary font-bold text-xl">€16</span></div>
-<p class="text-on-surface-variant kinetic-italic">Pasta fresca al Ragù bianco di Manzo</p>
+<div class="flex justify-between mb-4"><h3 class="text-xl font-bold kinetic-italic"><span data-i18n="primi.tagliatelle">Tagliatelle dei Pastori</span> <sup class="text-[10px] text-primary font-normal">1,3,9</sup></h3><span class="text-primary font-bold text-xl">€16</span></div>
+<p class="text-on-surface-variant kinetic-italic" data-i18n="primi.tagliatelle.desc">Pasta fresca al Ragù bianco di Manzo</p>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between mb-4"><h3 class="text-xl font-bold kinetic-italic">Carnaroli allo Stracotto <sup class="text-[10px] text-primary font-normal">7,9</sup></h3><span class="text-primary font-bold text-xl">€21</span></div>
-<p class="text-on-surface-variant kinetic-italic">Riso carnaroli mantecato burro e grana, con straccetti di manzo</p>
+<div class="flex justify-between mb-4"><h3 class="text-xl font-bold kinetic-italic"><span data-i18n="primi.carnaroli">Carnaroli allo Stracotto</span> <sup class="text-[10px] text-primary font-normal">7,9</sup></h3><span class="text-primary font-bold text-xl">€21</span></div>
+<p class="text-on-surface-variant kinetic-italic" data-i18n="primi.carnaroli.desc">Riso carnaroli mantecato burro e grana, con straccetti di manzo</p>
 </div>
 </div>
-<p class="text-on-surface-variant text-center mt-8 text-sm italic kinetic-italic">Per opzioni veggie/vegan, rivolgersi al personale</p>
+<p class="text-on-surface-variant text-center mt-8 text-sm italic kinetic-italic" data-i18n="primi.veggie">Per opzioni veggie/vegan, rivolgersi al personale</p>
 </div>
 </section>
 
@@ -301,22 +313,22 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-6xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">local_fire_department</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">I Tagli da Condividere</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="tagli.title">I Tagli da Condividere</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
-<p class="text-on-surface-variant text-center mb-12 italic text-lg kinetic-italic">Per un'esperienza culinaria unica</p>
+<p class="text-on-surface-variant text-center mb-12 italic text-lg kinetic-italic" data-i18n="tagli.intro">Per un'esperienza culinaria unica</p>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 text-center hover-lift">
-<h3 class="text-3xl font-bold mb-2 kinetic-italic">IL RE</h3>
-<p class="text-xl italic mb-2 kinetic-italic">Tomahawk Irlandese</p>
-<p class="text-on-surface-variant mb-4 kinetic-italic">a partire da 1 Kg</p>
+<h3 class="text-3xl font-bold mb-2 kinetic-italic" data-i18n="tagli.king">IL RE</h3>
+<p class="text-xl italic mb-2 kinetic-italic" data-i18n="tagli.king.cut">Tomahawk Irlandese</p>
+<p class="text-on-surface-variant mb-4 kinetic-italic" data-i18n="tagli.from1kg">a partire da 1 Kg</p>
 <div class="text-primary font-bold text-3xl">€7.8/hg</div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 text-center hover-lift">
-<h3 class="text-3xl font-bold mb-2 kinetic-italic">LA REGINA</h3>
-<p class="text-xl italic mb-2 kinetic-italic">Fiorentina</p>
-<p class="text-on-surface-variant mb-4 kinetic-italic">a partire da 1 Kg</p>
+<h3 class="text-3xl font-bold mb-2 kinetic-italic" data-i18n="tagli.queen">LA REGINA</h3>
+<p class="text-xl italic mb-2 kinetic-italic" data-i18n="tagli.queen.cut">Fiorentina</p>
+<p class="text-on-surface-variant mb-4 kinetic-italic" data-i18n="tagli.from1kg">a partire da 1 Kg</p>
 <div class="text-primary font-bold text-3xl">€6.5/hg</div>
 </div>
 </div>
@@ -328,44 +340,44 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-6xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">restaurant_menu</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Secondi</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="sec.secondi">Secondi</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
-<p class="text-on-surface-variant text-center mb-8 italic kinetic-italic">Il Regno della Muuuteca</p>
+<p class="text-on-surface-variant text-center mb-8 italic kinetic-italic" data-i18n="sec2.intro">Il Regno della Muuuteca</p>
 
 <div class="space-y-8 max-w-4xl mx-auto">
-<h3 class="text-2xl font-bold italic text-primary kinetic-italic">Il Principe Irlandese in due versioni</h3>
+<h3 class="text-2xl font-bold italic text-primary kinetic-italic" data-i18n="sec2.prince">Il Principe Irlandese in due versioni</h3>
 <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic">Agli aromi cotto in padella <sup class="text-[10px] text-primary font-normal">7</sup></h4><p class="text-on-surface-variant text-sm">Filetto di circa 200 gr con patate al forno</p></div><span class="text-primary font-bold text-xl">€30</span></div>
+<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic"><span data-i18n="sec2.prince.pan">Agli aromi cotto in padella</span> <sup class="text-[10px] text-primary font-normal">7</sup></h4><p class="text-on-surface-variant text-sm" data-i18n="sec2.prince.desc">Filetto di circa 200 gr con patate al forno</p></div><span class="text-primary font-bold text-xl">€30</span></div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic">Alla griglia</h4><p class="text-on-surface-variant text-sm">Filetto di circa 200 gr con patate al forno</p></div><span class="text-primary font-bold text-xl">€29</span></div>
-</div>
-
-<h3 class="text-xl font-bold italic text-primary mt-8 kinetic-italic">La Principessa</h3>
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic">Costata</h4><p class="text-on-surface-variant text-sm">a partire da 600 gr</p></div><span class="text-primary font-bold text-xl">€5/hg</span></div>
+<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic" data-i18n="sec2.prince.grill">Alla griglia</h4><p class="text-on-surface-variant text-sm" data-i18n="sec2.prince.desc">Filetto di circa 200 gr con patate al forno</p></div><span class="text-primary font-bold text-xl">€29</span></div>
 </div>
 
-<h3 class="text-xl font-bold italic text-primary mt-8 kinetic-italic">La Contessa</h3>
+<h3 class="text-xl font-bold italic text-primary mt-8 kinetic-italic" data-i18n="sec2.princess">La Principessa</h3>
 <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic">Cotoletta di Vitello con osso <sup class="text-[10px] text-primary font-normal">1,3,7</sup></h4></div><span class="text-primary font-bold text-xl">€26</span></div>
+<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic" data-i18n="sec2.costata">Costata</h4><p class="text-on-surface-variant text-sm" data-i18n="sec2.from600">a partire da 600 gr</p></div><span class="text-primary font-bold text-xl">€5/hg</span></div>
 </div>
 
-<h3 class="text-xl font-bold italic text-primary mt-8 kinetic-italic">Il Duca Sudamericano</h3>
+<h3 class="text-xl font-bold italic text-primary mt-8 kinetic-italic" data-i18n="sec2.countess">La Contessa</h3>
 <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic">Picanha</h4><p class="text-on-surface-variant text-sm">circa 200 gr servita con salsa chimichurri</p></div><span class="text-primary font-bold text-xl">€28</span></div>
+<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic"><span data-i18n="sec2.cotoletta">Cotoletta di Vitello con osso</span> <sup class="text-[10px] text-primary font-normal">1,3,7</sup></h4></div><span class="text-primary font-bold text-xl">€26</span></div>
 </div>
 
-<h3 class="text-xl font-bold italic text-primary mt-8 kinetic-italic">La Marchesina Sudamericana in due versioni <sup class="text-[10px] font-normal">7</sup></h3>
+<h3 class="text-xl font-bold italic text-primary mt-8 kinetic-italic" data-i18n="sec2.duke">Il Duca Sudamericano</h3>
 <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic">Rucola e Grana</h4><p class="text-on-surface-variant text-sm">Tagliata di Manzo di circa 180g con rucola e grana</p></div><span class="text-primary font-bold text-xl">€24</span></div>
-</div>
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic">Rustica</h4><p class="text-on-surface-variant text-sm">Tagliata di Manzo di circa 180g con patate al forno e salsa verde</p></div><span class="text-primary font-bold text-xl">€22</span></div>
+<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic" data-i18n="sec2.picanha">Picanha</h4><p class="text-on-surface-variant text-sm" data-i18n="sec2.picanha.desc">circa 200 gr servita con salsa chimichurri</p></div><span class="text-primary font-bold text-xl">€28</span></div>
 </div>
 
-<p class="text-on-surface-variant text-center mt-8 text-sm italic kinetic-italic">Se si vuole una grammatura più elevata chiedere al personale<br>Per opzioni veggie/vegan, rivolgersi al personale</p>
+<h3 class="text-xl font-bold italic text-primary mt-8 kinetic-italic"><span data-i18n="sec2.marchesina">La Marchesina Sudamericana in due versioni</span> <sup class="text-[10px] font-normal">7</sup></h3>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
+<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic" data-i18n="sec2.rucola">Rucola e Grana</h4><p class="text-on-surface-variant text-sm" data-i18n="sec2.rucola.desc">Tagliata di Manzo di circa 180g con rucola e grana</p></div><span class="text-primary font-bold text-xl">€24</span></div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover-lift" data-aos="fade-up">
+<div class="flex justify-between items-start"><div><h4 class="font-bold text-lg kinetic-italic" data-i18n="sec2.rustica">Rustica</h4><p class="text-on-surface-variant text-sm" data-i18n="sec2.rustica.desc">Tagliata di Manzo di circa 180g con patate al forno e salsa verde</p></div><span class="text-primary font-bold text-xl">€22</span></div>
+</div>
+
+<p class="text-on-surface-variant text-center mt-8 text-sm italic kinetic-italic" data-i18n-html="sec2.notes">Se si vuole una grammatura più elevata chiedere al personale<br>Per opzioni veggie/vegan, rivolgersi al personale</p>
 </div>
 </div>
 </section>
@@ -375,18 +387,18 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-6xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">local_dining</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Contorni</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="sec.contorni">Contorni</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic">Carote glassate al miele</h4><span class="text-primary font-bold">€7</span></div>
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic">Patate al forno</h4><span class="text-primary font-bold">€6</span></div>
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic">Patate fritte</h4><span class="text-primary font-bold">€5</span></div>
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic">Gnocco fritto <sup class="text-[10px] text-primary font-normal">1</sup></h4><span class="text-primary font-bold">€6</span></div>
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic">Verdure grigliate</h4><span class="text-primary font-bold">€6.5</span></div>
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic">Spinaci saltati con aglio e n'duja</h4><span class="text-primary font-bold">€7</span></div>
-<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic">Insalata</h4><span class="text-primary font-bold">€5</span></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic" data-i18n="side.carrots">Carote glassate al miele</h4><span class="text-primary font-bold">€7</span></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic" data-i18n="side.roastpot">Patate al forno</h4><span class="text-primary font-bold">€6</span></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic" data-i18n="side.fries">Patate fritte</h4><span class="text-primary font-bold">€5</span></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic"><span data-i18n="side.gnocco">Gnocco fritto</span> <sup class="text-[10px] text-primary font-normal">1</sup></h4><span class="text-primary font-bold">€6</span></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic" data-i18n="side.grillveg">Verdure grigliate</h4><span class="text-primary font-bold">€6.5</span></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic" data-i18n="side.spinach">Spinaci saltati con aglio e n'duja</h4><span class="text-primary font-bold">€7</span></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 text-center hover-lift"><h4 class="font-bold kinetic-italic" data-i18n="side.salad">Insalata</h4><span class="text-primary font-bold">€5</span></div>
 </div>
 </div>
 </section>
@@ -397,25 +409,25 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-6xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">cake</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">MuuuMoments - Dolci</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="dolci.title">MuuuMoments - Dolci</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic">Tarteletta con frutta fresca <sup class="text-[10px] text-primary font-normal">1,3,7</sup></h4><span class="text-primary font-bold text-xl">€8</span></div>
+<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic"><span data-i18n="dolci.tarteletta">Tarteletta con frutta fresca</span> <sup class="text-[10px] text-primary font-normal">1,3,7</sup></h4><span class="text-primary font-bold text-xl">€8</span></div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic">Panna cotta con salsa al cioccolato e crumble <sup class="text-[10px] text-primary font-normal">1,7,8</sup></h4><span class="text-primary font-bold text-xl">€6.5</span></div>
+<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic"><span data-i18n="dolci.pannacotta">Panna cotta con salsa al cioccolato e crumble</span> <sup class="text-[10px] text-primary font-normal">1,7,8</sup></h4><span class="text-primary font-bold text-xl">€6.5</span></div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic">Cheesecake al tiramisù <sup class="text-[10px] text-primary font-normal">1,3,7</sup></h4><span class="text-primary font-bold text-xl">€7.5</span></div>
+<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic"><span data-i18n="dolci.cheesecake">Cheesecake al tiramisù</span> <sup class="text-[10px] text-primary font-normal">1,3,7</sup></h4><span class="text-primary font-bold text-xl">€7.5</span></div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic">Semifreddo al limone <sup class="text-[10px] text-primary font-normal">3,7</sup></h4><span class="text-primary font-bold text-xl">€7</span></div>
+<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic"><span data-i18n="dolci.semifreddo">Semifreddo al limone</span> <sup class="text-[10px] text-primary font-normal">3,7</sup></h4><span class="text-primary font-bold text-xl">€7</span></div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift lg:col-span-2">
-<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic">Taglio della Torta</h4><span class="text-primary font-bold text-xl">€2 p.p.</span></div>
+<div class="flex justify-between"><h4 class="font-bold text-lg kinetic-italic" data-i18n="dolci.cake">Taglio della Torta</h4><span class="text-primary font-bold text-xl">€2 <span data-i18n="pp">p.p.</span></span></div>
 </div>
 </div>
 </div>
@@ -426,36 +438,35 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-6xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">local_cafe</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Bevande</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="sec.bevande">Bevande</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<h3 class="text-2xl font-bold mb-6 text-primary kinetic-italic">Le Nostre Birre</h3>
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up"><h3 class="text-2xl font-bold mb-6 text-primary kinetic-italic" data-i18n="bev.beers">Le Nostre Birre</h3>
 <div class="space-y-4">
 <div class="flex justify-between"><h4 class="font-bold kinetic-italic">Monchshof Bock Bier 0.5L</h4><span class="text-primary font-bold">€7</span></div>
-<div class="flex justify-between"><h4 class="font-bold kinetic-italic">Monchshof Keller Bier non filtrata 0.5L</h4><span class="text-primary font-bold">€7.5</span></div>
-<div class="flex justify-between"><h4 class="font-bold kinetic-italic">Monchshof Pils Chiara 0.50L</h4><span class="text-primary font-bold">€6.5</span></div>
+<div class="flex justify-between"><h4 class="font-bold kinetic-italic" data-i18n="bev.keller">Monchshof Keller Bier non filtrata 0.5L</h4><span class="text-primary font-bold">€7.5</span></div>
+<div class="flex justify-between"><h4 class="font-bold kinetic-italic" data-i18n="bev.pils">Monchshof Pils Chiara 0.50L</h4><span class="text-primary font-bold">€6.5</span></div>
 <div class="flex justify-between"><h4 class="font-bold kinetic-italic">Kapuzziner Weiss Bier 0.50L</h4><span class="text-primary font-bold">€6.5</span></div>
 <div class="flex justify-between"><h4 class="font-bold kinetic-italic">Blanche de Bruxelles 0.33L</h4><span class="text-primary font-bold">€6</span></div>
 </div>
 </div>
 
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<h3 class="text-2xl font-bold mb-6 text-primary kinetic-italic">Bibite</h3>
+<h3 class="text-2xl font-bold mb-6 text-primary kinetic-italic" data-i18n="bev.soft">Bibite</h3>
 <div class="space-y-4">
-<div class="flex justify-between"><h4 class="font-bold kinetic-italic">Acqua Naturale o Frizzante 0.50L</h4><span class="text-primary font-bold">€3</span></div>
+<div class="flex justify-between"><h4 class="font-bold kinetic-italic" data-i18n="bev.water">Acqua Naturale o Frizzante 0.50L</h4><span class="text-primary font-bold">€3</span></div>
 <div class="flex justify-between"><h4 class="font-bold kinetic-italic">Coca Cola</h4><span class="text-primary font-bold">€4.5</span></div>
 <div class="flex justify-between"><h4 class="font-bold kinetic-italic">Coca Cola Zero</h4><span class="text-primary font-bold">€4.5</span></div>
-<div class="flex justify-between"><h4 class="font-bold kinetic-italic">Fanta in bottiglia</h4><span class="text-primary font-bold">€4.5</span></div>
+<div class="flex justify-between"><h4 class="font-bold kinetic-italic" data-i18n="bev.fanta">Fanta in bottiglia</h4><span class="text-primary font-bold">€4.5</span></div>
 <div class="flex justify-between"><h4 class="font-bold kinetic-italic">Sprite</h4><span class="text-primary font-bold">€4.5</span></div>
-<div class="flex justify-between"><h4 class="font-bold kinetic-italic">Caffè</h4><span class="text-primary font-bold">€2</span></div>
-<div class="flex justify-between"><h4 class="font-bold kinetic-italic">Caffè corretto</h4><span class="text-primary font-bold">€3</span></div>
+<div class="flex justify-between"><h4 class="font-bold kinetic-italic" data-i18n="bev.coffee">Caffè</h4><span class="text-primary font-bold">€2</span></div>
+<div class="flex justify-between"><h4 class="font-bold kinetic-italic" data-i18n="bev.coffee.spiked">Caffè corretto</h4><span class="text-primary font-bold">€3</span></div>
 </div>
 </div>
 </div>
-<p class="text-on-surface-variant text-center mt-8 text-lg font-bold kinetic-italic">Coperto €2.5 p.p.</p>
+<p class="text-on-surface-variant text-center mt-8 text-lg font-bold kinetic-italic" data-i18n="bev.cover">Coperto €2.5 p.p.</p>
 </div>
 </section>
 
@@ -464,13 +475,13 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-6xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">local_bar</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Amari & Digestivi</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="amari.title">Amari &amp; Digestivi</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Amari</h4>
+<h4 class="text-xl font-bold mb-6 text-primary kinetic-italic" data-i18n="amari.amari">Amari</h4>
 <div class="space-y-3">
 <div class="flex justify-between"><span class="kinetic-italic">Sambuca</span><span class="text-primary font-bold">€5</span></div>
 <div class="flex justify-between"><span class="kinetic-italic">Montenegro</span><span class="text-primary font-bold">€6</span></div>
@@ -490,14 +501,14 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
 <h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Grappe Castagner</h4>
 <div class="space-y-3">
-<div class="flex justify-between"><span class="kinetic-italic">Secca</span><span class="text-primary font-bold">€7</span></div>
-<div class="flex justify-between"><span class="kinetic-italic">Morbida</span><span class="text-primary font-bold">€6</span></div>
-<div class="flex justify-between"><span class="kinetic-italic">Barricata</span><span class="text-primary font-bold">€8</span></div>
+<div class="flex justify-between"><span class="kinetic-italic" data-i18n="grappa.dry">Secca</span><span class="text-primary font-bold">€7</span></div>
+<div class="flex justify-between"><span class="kinetic-italic" data-i18n="grappa.smooth">Morbida</span><span class="text-primary font-bold">€6</span></div>
+<div class="flex justify-between"><span class="kinetic-italic" data-i18n="grappa.aged">Barricata</span><span class="text-primary font-bold">€8</span></div>
 </div>
 </div>
 
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Whisky & Rum</h4>
+<h4 class="text-xl font-bold mb-6 text-primary kinetic-italic">Whisky &amp; Rum</h4>
 <div class="space-y-3">
 <div class="flex justify-between"><span class="kinetic-italic">Bulleit Bourbon</span><span class="text-primary font-bold">€12</span></div>
 <div class="flex justify-between"><span class="kinetic-italic">Bulleit Rye</span><span class="text-primary font-bold">€10</span></div>
@@ -513,137 +524,137 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="container mx-auto max-w-4xl">
 <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
 <span class="material-symbols-outlined text-primary text-3xl">warning</span>
-<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic">Etichettatura Allergeni</h2>
+<h2 class="text-4xl md:text-5xl font-light italic kinetic-italic" data-i18n="all.title">Etichettatura Allergeni</h2>
 <div class="flex-1 h-px bg-outline-variant/20 ml-4"></div>
 </div>
 
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift mb-8">
-<p class="text-on-surface-variant text-sm kinetic-italic mb-4">È obbligatoria la presenza di traguardi sostanziali di segnare residui allergenici.</p>
-<p class="text-on-surface-variant text-sm kinetic-italic mb-4">La norma parte dal presupposto che luce ingrediente sono all'origine di allergie o intolleranze nei individui da incidenti la presenza di tali vaccini, i pericoli per la salute, è resa quindi obbligatoria la soia, uova, crostacei, noci, pesce, glutine, arachidi, frutta, legumi/soia in particolare e srachidi e ajpio e altri cereali.</p>
-<p class="text-on-surface-variant text-sm kinetic-italic font-bold">LA NORMATIVA DI RIFERIMENTO IN MATERIA È IL REGOLAMENTO UE N° 1169/2011</p>
+<p class="text-on-surface-variant text-sm kinetic-italic mb-4" data-i18n="all.intro1">È obbligatoria la presenza di traguardi sostanziali di segnare residui allergenici.</p>
+<p class="text-on-surface-variant text-sm kinetic-italic mb-4" data-i18n="all.intro2">La norma parte dal presupposto che luce ingrediente sono all'origine di allergie o intolleranze nei individui da incidenti la presenza di tali vaccini, i pericoli per la salute, è resa quindi obbligatoria la soia, uova, crostacei, noci, pesce, glutine, arachidi, frutta, legumi/soia in particolare e srachidi e ajpio e altri cereali.</p>
+<p class="text-on-surface-variant text-sm kinetic-italic font-bold" data-i18n="all.regulation">LA NORMATIVA DI RIFERIMENTO IN MATERIA È IL REGOLAMENTO UE N° 1169/2011</p>
 </div>
 
 <div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover-lift" data-aos="fade-up">
-<h3 class="text-2xl font-bold italic mb-8 text-primary kinetic-italic">Sostanze o prodotti che provocano allergie o intolleranze:</h3>
+<h3 class="text-2xl font-bold italic mb-8 text-primary kinetic-italic" data-i18n="all.heading">Sostanze o prodotti che provocano allergie o intolleranze:</h3>
 
 <div class="space-y-6">
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">1.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic mb-1">Cereali contenenti glutine</h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">Cioè: grano, segale, orzo, avena, farro, kamut o i loro ceppi ibridati e prodotti a base di pane;</p>
-<p class="text-on-surface-variant text-sm kinetic-italic mt-1">a) sciroppi di glucosio a base di grano, incluso destrosio (1);</p>
-<p class="text-on-surface-variant text-sm kinetic-italic">b) maltodestrine a base di grano (1);</p>
-<p class="text-on-source-variant text-sm kinetic-italic">c) sciroppi di glucosio a base di orzo;</p>
-<p class="text-on-surface-variant text-sm kinetic-italic">d) cereali utilizzati per la fabbricazione di distillati alcolici; incluso l'etilo d'origine agricola.</p>
+<h4 class="font-bold text-lg kinetic-italic mb-1" data-i18n="all.1.t">Cereali contenenti glutine</h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.1.d">Cioè: grano, segale, orzo, avena, farro, kamut o i loro ceppi ibridati e prodotti a base di pane;</p>
+<p class="text-on-surface-variant text-sm kinetic-italic mt-1" data-i18n="all.1.a">a) sciroppi di glucosio a base di grano, incluso destrosio (1);</p>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.1.b">b) maltodestrine a base di grano (1);</p>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.1.c">c) sciroppi di glucosio a base di orzo;</p>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.1.dd">d) cereali utilizzati per la fabbricazione di distillati alcolici; incluso l'etilo d'origine agricola.</p>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">2.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Crostacei e prodotti a base di crostacei.</h4>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.2">Crostacei e prodotti a base di crostacei.</h4>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">3.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Uova e prodotti a base di uova.</h4>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.3">Uova e prodotti a base di uova.</h4>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">4.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Pesce e prodotti a base di pesce, tranne:</h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">a) gelatina di pesce utilizzata come supporto per le vitamine e i carotenoidi;</p>
-<p class="text-on-surface-variant text-sm kinetic-italic">b) gelatina di pesce o colla di pesce utilizzata come chiarificante nella birra e nel vino.</p>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.4.t">Pesce e prodotti a base di pesce, tranne:</h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.4.a">a) gelatina di pesce utilizzata come supporto per le vitamine e i carotenoidi;</p>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.4.b">b) gelatina di pesce o colla di pesce utilizzata come chiarificante nella birra e nel vino.</p>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">5.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Arachidi e prodotti a base di arachidi.</h4>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.5">Arachidi e prodotti a base di arachidi.</h4>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">6.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Soia e prodotti a base di soia, tranne:</h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">a) olio e grasso di soia raffinato (1);</p>
-<p class="text-on-surface-variant text-sm kinetic-italic">b) tocoferoli misti naturali (E306), tocoferolo D-alfa naturale, tocoferolo acetato D-alfa naturale, tocoferolo succinato D-alfa naturale a base di soia;</p>
-<p class="text-on-surface-variant text-sm kinetic-italic">c) oli vegetali derivati da fitosteroli e fitosteroli esteri a base di soia;</p>
-<p class="text-on-surface-variant text-sm kinetic-italic">d) estere di stanolo vegetale prodotto da steroli di olio vegetale a base di soia.</p>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.6.t">Soia e prodotti a base di soia, tranne:</h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.6.a">a) olio e grasso di soia raffinato (1);</p>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.6.b">b) tocoferoli misti naturali (E306), tocoferolo D-alfa naturale, tocoferolo acetato D-alfa naturale, tocoferolo succinato D-alfa naturale a base di soia;</p>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.6.c">c) oli vegetali derivati da fitosteroli e fitosteroli esteri a base di soia;</p>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.6.d">d) estere di stanolo vegetale prodotto da steroli di olio vegetale a base di soia.</p>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">7.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Latte e prodotti a base di latte (incluso lattosio), tranne:</h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">a) siero di latte utilizzato per la fabbricazione di distillati alcolici, incluso l'etilo d'origine agricola;</p>
-<p class="text-on-surface-variant text-sm kinetic-italic">b) lattiolo.</p>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.7.t">Latte e prodotti a base di latte (incluso lattosio), tranne:</h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.7.a">a) siero di latte utilizzato per la fabbricazione di distillati alcolici, incluso l'etilo d'origine agricola;</p>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.7.b">b) lattiolo.</p>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">8.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Frutta a guscio</h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">Vale a dire: mandorle (Amygdalus communis L.), nocciole (Corylus avellana), noci (Juglans regia), noci di acagiù (Anacardium occidentale), noci di pecan (Carya illinoinensis (Wangenh.) K. Koch), noci del Brasile (Bertholletia excelsa), pistacchi (Pistacia vera), noci macadamia o noci del Queensland (Macadamia ternifolia), e i loro prodotti, tranne per la frutta a guscio per la fabbricazione di distillati alcolici, incluso l'etilo d'origine agricola.</p>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.8.t">Frutta a guscio</h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.8.d">Vale a dire: mandorle (Amygdalus communis L.), nocciole (Corylus avellana), noci (Juglans regia), noci di acagiù (Anacardium occidentale), noci di pecan (Carya illinoinensis (Wangenh.) K. Koch), noci del Brasile (Bertholletia excelsa), pistacchi (Pistacia vera), noci macadamia o noci del Queensland (Macadamia ternifolia), e i loro prodotti, tranne per la frutta a guscio per la fabbricazione di distillati alcolici, incluso l'etilo d'origine agricola.</p>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">9.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Sedano e prodotti a base di sedano.</h4>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.9">Sedano e prodotti a base di sedano.</h4>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">10.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Senape e prodotti a base di senape.</h4>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.10">Senape e prodotti a base di senape.</h4>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">11.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Semi di sesamo e prodotti a base di semi di sesamo.</h4>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.11">Semi di sesamo e prodotti a base di semi di sesamo.</h4>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">12.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Anidride solforosa e solfiti</h4>
-<p class="text-on-surface-variant text-sm kinetic-italic">In concentrazioni superiori a 10 mg/Kg o 10 mg/litro in termini di SO2 totale da calcolarsi per i prodotti così come proposti pronti al consumo o ricostituiti conformemente alle istruzioni dei fabbricanti.</p>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.12.t">Anidride solforosa e solfiti</h4>
+<p class="text-on-surface-variant text-sm kinetic-italic" data-i18n="all.12.d">In concentrazioni superiori a 10 mg/Kg o 10 mg/litro in termini di SO2 totale da calcolarsi per i prodotti così come proposti pronti al consumo o ricostituiti conformemente alle istruzioni dei fabbricanti.</p>
 </div>
 </div>
 
 <div class="flex gap-4 pb-6 border-b border-outline-variant/10">
 <span class="text-primary font-bold text-lg min-w-[28px]">13.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Lupini e prodotti a base di lupini.</h4>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.13">Lupini e prodotti a base di lupini.</h4>
 </div>
 </div>
 
 <div class="flex gap-4">
 <span class="text-primary font-bold text-lg min-w-[28px]">14.</span>
 <div>
-<h4 class="font-bold text-lg kinetic-italic">Molluschi e prodotti a base di molluschi.</h4>
+<h4 class="font-bold text-lg kinetic-italic" data-i18n="all.14">Molluschi e prodotti a base di molluschi.</h4>
 </div>
 </div>
 
 </div>
 
-<p class="text-on-surface-variant text-xs mt-8 kinetic-italic">REGOLAMENTO (UE) N. 1169_2011 del 25 ottobre 2011 ALLEGATO II</p>
+<p class="text-on-surface-variant text-xs mt-8 kinetic-italic" data-i18n="all.footer">REGOLAMENTO (UE) N. 1169_2011 del 25 ottobre 2011 ALLEGATO II</p>
 </div>
 </div>
 </section>
@@ -655,24 +666,207 @@ Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'e
 <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
 <div class="mb-8 md:mb-0">
 <a href="index.html"><img src="logo.png" alt="MuuuTeca" class="h-10 mb-2"></a>
-<p class="text-zinc-500 text-sm italic">L'essenza della carne, lo spirito del vino a Pavia.</p>
+<p class="text-zinc-500 text-sm italic" data-i18n="footer.tagline">L'essenza della carne, lo spirito del vino a Pavia.</p>
 </div>
 <div class="flex gap-8 mb-8 md:mb-0">
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="index.html">Home</a>
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="chi-siamo.html">Chi Siamo</a>
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="menu.html">Menu</a>
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="carta-dei-vini.html">Carta dei Vini</a>
-<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="prenotazioni.html">Prenotazioni</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="index.html" data-i18n="nav.home">Home</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="menu.html" data-i18n="nav.menu">Menu</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="carta-dei-vini.html" data-i18n="nav.wines">Carta dei Vini</a>
+<a class="text-zinc-500 hover:text-[#b8860b] transition-colors italic text-sm" href="prenotazioni.html" data-i18n="nav.reservations">Prenotazioni</a>
 </div>
-<div class="text-zinc-500 italic text-sm">© 2024 MuuuTeca. Tutti i diritti riservati.</div>
+<div class="text-zinc-500 italic text-sm" data-i18n="footer.copy">© 2024 MuuuTeca. Tutti i diritti riservati.</div>
 </div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
+var I18N = {
+  it: {
+    "page.title": "Menù - MuuuTeca",
+    "nav.home": "Home", "nav.about": "Chi Siamo", "nav.menu": "Menu", "nav.wines": "Carta dei Vini", "nav.reservations": "Prenotazioni", "nav.book": "Book a Table",
+    "header.kicker": "Il Nostro Menù", "header.title.before": "Scopri i nostri", "header.title.accent": "Sapori",
+    "header.subtitle": "Una selezione curata di carni pregiate, primi artigianali e vini scelti per un'esperienza gastronomica unica a Pavia.",
+    "sectionsLabel": "Sezioni Menu",
+    "sec.antipasti": "Antipasti", "sec.primi": "Primi", "sec.tagli": "I Tagli", "sec.secondi": "Secondi", "sec.contorni": "Contorni", "sec.dolci": "Dolci", "sec.bevande": "Bevande", "sec.amari": "Amari", "sec.allergeni": "Allergeni",
+    "ant.tartare.title": "Le Nostre Tartare Iconiche", "ant.tartare.sub": "da abbinare con un calice di bollicine",
+    "ant.tartare.classica": "La Classica", "ant.tartare.classica.desc": "Con pepe nero, sale, olio EVO e limone",
+    "ant.tartare.cruda": "La Muuucruda", "ant.tartare.cruda.desc": "Con sale, pepe nero, cipolla rossa, capperi, senape, tuorlo d'uovo e olio al tartufo",
+    "ant.tartare.marinata": "La Muuurinata", "ant.tartare.marinata.desc": "Zucchine marinate, scorza di limone, sale, pepe e olio",
+    "ant.share.title": "Ideali da Condividere", "ant.share.sub": "al centro tavola",
+    "ant.skewers.lamb": "Arrosticini di Pecora", "ant.skewers.angus": "Arrosticini di Black Angus", "ant.skewers.qty": "5 pezzi / 10 pezzi",
+    "ant.board.pasture": "L'Angolo del Pascolo", "ant.board.pasture.desc": "Tagliere di salumi (crudo San Daniele stagionato 24 mesi, lardo di Patanegra, coppa di Parma, salame di Varzi) e formaggi (Formaggio Occelli a latte misto affinato nella foglia di castagno, nel Barolo, nel malto d'orzo e whisky, nella grappa con frutta) servito con gnocco fritto",
+    "ant.board.cheese": "Degustazione Tagliere di Formaggi", "ant.board.cheese.desc": "Selezione stagionata (Formaggio Occelli a latte misto affinato nella foglia di castagno, nel Barolo, nel malto d'orzo e whisky, nella grappa con frutta) servito con gnocco fritto e su richiesta confetture",
+    "ant.board.charc": "Degustazione Tagliere Salumi", "ant.board.charc.desc": "Selezione di salumi (crudo San Daniele stagionato 24 mesi, lardo di Patanegra, coppa di Parma, Salame di Varzi) con gnocco fritto",
+    "primi.intro": "Pasta fresca rigorosamente fatta con le nostre mani",
+    "primi.scrigno": "Scrigno del Vitello", "primi.scrigno.desc": "Pasta ripiena di vitello, serviti con burro e salvia",
+    "primi.tagliatelle": "Tagliatelle dei Pastori", "primi.tagliatelle.desc": "Pasta fresca al Ragù bianco di Manzo",
+    "primi.carnaroli": "Carnaroli allo Stracotto", "primi.carnaroli.desc": "Riso carnaroli mantecato burro e grana, con straccetti di manzo",
+    "primi.veggie": "Per opzioni veggie/vegan, rivolgersi al personale",
+    "tagli.title": "I Tagli da Condividere", "tagli.intro": "Per un'esperienza culinaria unica",
+    "tagli.king": "IL RE", "tagli.king.cut": "Tomahawk Irlandese", "tagli.queen": "LA REGINA", "tagli.queen.cut": "Fiorentina", "tagli.from1kg": "a partire da 1 Kg",
+    "sec2.intro": "Il Regno della Muuuteca",
+    "sec2.prince": "Il Principe Irlandese in due versioni", "sec2.prince.pan": "Agli aromi cotto in padella", "sec2.prince.grill": "Alla griglia", "sec2.prince.desc": "Filetto di circa 200 gr con patate al forno",
+    "sec2.princess": "La Principessa", "sec2.costata": "Costata", "sec2.from600": "a partire da 600 gr",
+    "sec2.countess": "La Contessa", "sec2.cotoletta": "Cotoletta di Vitello con osso",
+    "sec2.duke": "Il Duca Sudamericano", "sec2.picanha": "Picanha", "sec2.picanha.desc": "circa 200 gr servita con salsa chimichurri",
+    "sec2.marchesina": "La Marchesina Sudamericana in due versioni",
+    "sec2.rucola": "Rucola e Grana", "sec2.rucola.desc": "Tagliata di Manzo di circa 180g con rucola e grana",
+    "sec2.rustica": "Rustica", "sec2.rustica.desc": "Tagliata di Manzo di circa 180g con patate al forno e salsa verde",
+    "sec2.notes": "Se si vuole una grammatura più elevata chiedere al personale<br>Per opzioni veggie/vegan, rivolgersi al personale",
+    "side.carrots": "Carote glassate al miele", "side.roastpot": "Patate al forno", "side.fries": "Patate fritte", "side.gnocco": "Gnocco fritto", "side.grillveg": "Verdure grigliate", "side.spinach": "Spinaci saltati con aglio e n'duja", "side.salad": "Insalata",
+    "dolci.title": "MuuuMoments - Dolci",
+    "dolci.tarteletta": "Tarteletta con frutta fresca", "dolci.pannacotta": "Panna cotta con salsa al cioccolato e crumble", "dolci.cheesecake": "Cheesecake al tiramisù", "dolci.semifreddo": "Semifreddo al limone", "dolci.cake": "Taglio della Torta", "pp": "p.p.",
+    "bev.beers": "Le Nostre Birre", "bev.keller": "Monchshof Keller Bier non filtrata 0.5L", "bev.pils": "Monchshof Pils Chiara 0.50L",
+    "bev.soft": "Bibite", "bev.water": "Acqua Naturale o Frizzante 0.50L", "bev.fanta": "Fanta in bottiglia", "bev.coffee": "Caffè", "bev.coffee.spiked": "Caffè corretto",
+    "bev.cover": "Coperto €2.5 p.p.",
+    "amari.title": "Amari & Digestivi", "amari.amari": "Amari",
+    "grappa.dry": "Secca", "grappa.smooth": "Morbida", "grappa.aged": "Barricata",
+    "all.title": "Etichettatura Allergeni",
+    "all.intro1": "È obbligatoria la presenza di traguardi sostanziali di segnare residui allergenici.",
+    "all.intro2": "La norma parte dal presupposto che luce ingrediente sono all'origine di allergie o intolleranze nei individui da incidenti la presenza di tali vaccini, i pericoli per la salute, è resa quindi obbligatoria la soia, uova, crostacei, noci, pesce, glutine, arachidi, frutta, legumi/soia in particolare e srachidi e ajpio e altri cereali.",
+    "all.regulation": "LA NORMATIVA DI RIFERIMENTO IN MATERIA È IL REGOLAMENTO UE N° 1169/2011",
+    "all.heading": "Sostanze o prodotti che provocano allergie o intolleranze:",
+    "all.1.t": "Cereali contenenti glutine",
+    "all.1.d": "Cioè: grano, segale, orzo, avena, farro, kamut o i loro ceppi ibridati e prodotti a base di pane;",
+    "all.1.a": "a) sciroppi di glucosio a base di grano, incluso destrosio (1);",
+    "all.1.b": "b) maltodestrine a base di grano (1);",
+    "all.1.c": "c) sciroppi di glucosio a base di orzo;",
+    "all.1.dd": "d) cereali utilizzati per la fabbricazione di distillati alcolici; incluso l'etilo d'origine agricola.",
+    "all.2": "Crostacei e prodotti a base di crostacei.",
+    "all.3": "Uova e prodotti a base di uova.",
+    "all.4.t": "Pesce e prodotti a base di pesce, tranne:",
+    "all.4.a": "a) gelatina di pesce utilizzata come supporto per le vitamine e i carotenoidi;",
+    "all.4.b": "b) gelatina di pesce o colla di pesce utilizzata come chiarificante nella birra e nel vino.",
+    "all.5": "Arachidi e prodotti a base di arachidi.",
+    "all.6.t": "Soia e prodotti a base di soia, tranne:",
+    "all.6.a": "a) olio e grasso di soia raffinato (1);",
+    "all.6.b": "b) tocoferoli misti naturali (E306), tocoferolo D-alfa naturale, tocoferolo acetato D-alfa naturale, tocoferolo succinato D-alfa naturale a base di soia;",
+    "all.6.c": "c) oli vegetali derivati da fitosteroli e fitosteroli esteri a base di soia;",
+    "all.6.d": "d) estere di stanolo vegetale prodotto da steroli di olio vegetale a base di soia.",
+    "all.7.t": "Latte e prodotti a base di latte (incluso lattosio), tranne:",
+    "all.7.a": "a) siero di latte utilizzato per la fabbricazione di distillati alcolici, incluso l'etilo d'origine agricola;",
+    "all.7.b": "b) lattiolo.",
+    "all.8.t": "Frutta a guscio",
+    "all.8.d": "Vale a dire: mandorle (Amygdalus communis L.), nocciole (Corylus avellana), noci (Juglans regia), noci di acagiù (Anacardium occidentale), noci di pecan (Carya illinoinensis (Wangenh.) K. Koch), noci del Brasile (Bertholletia excelsa), pistacchi (Pistacia vera), noci macadamia o noci del Queensland (Macadamia ternifolia), e i loro prodotti, tranne per la frutta a guscio per la fabbricazione di distillati alcolici, incluso l'etilo d'origine agricola.",
+    "all.9": "Sedano e prodotti a base di sedano.",
+    "all.10": "Senape e prodotti a base di senape.",
+    "all.11": "Semi di sesamo e prodotti a base di semi di sesamo.",
+    "all.12.t": "Anidride solforosa e solfiti",
+    "all.12.d": "In concentrazioni superiori a 10 mg/Kg o 10 mg/litro in termini di SO2 totale da calcolarsi per i prodotti così come proposti pronti al consumo o ricostituiti conformemente alle istruzioni dei fabbricanti.",
+    "all.13": "Lupini e prodotti a base di lupini.",
+    "all.14": "Molluschi e prodotti a base di molluschi.",
+    "all.footer": "REGOLAMENTO (UE) N. 1169_2011 del 25 ottobre 2011 ALLEGATO II",
+    "footer.tagline": "L'essenza della carne, lo spirito del vino a Pavia.",
+    "footer.copy": "© 2024 MuuuTeca. Tutti i diritti riservati."
+  },
+  en: {
+    "page.title": "Menu - MuuuTeca",
+    "nav.home": "Home", "nav.about": "About Us", "nav.menu": "Menu", "nav.wines": "Wine List", "nav.reservations": "Reservations", "nav.book": "Book a Table",
+    "header.kicker": "Our Menu", "header.title.before": "Discover our", "header.title.accent": "Flavors",
+    "header.subtitle": "A curated selection of premium meats, handmade pasta, and selected wines for a unique dining experience in Pavia.",
+    "sectionsLabel": "Menu Sections",
+    "sec.antipasti": "Starters", "sec.primi": "First Courses", "sec.tagli": "The Cuts", "sec.secondi": "Mains", "sec.contorni": "Sides", "sec.dolci": "Desserts", "sec.bevande": "Drinks", "sec.amari": "Amari", "sec.allergeni": "Allergens",
+    "ant.tartare.title": "Our Iconic Tartares", "ant.tartare.sub": "to pair with a glass of sparkling wine",
+    "ant.tartare.classica": "The Classic", "ant.tartare.classica.desc": "With black pepper, salt, EVO oil and lemon",
+    "ant.tartare.cruda": "La Muuucruda", "ant.tartare.cruda.desc": "With salt, black pepper, red onion, capers, mustard, egg yolk and truffle oil",
+    "ant.tartare.marinata": "La Muuurinata", "ant.tartare.marinata.desc": "Marinated zucchini, lemon zest, salt, pepper and oil",
+    "ant.share.title": "Perfect for Sharing", "ant.share.sub": "at the center of the table",
+    "ant.skewers.lamb": "Lamb Skewers", "ant.skewers.angus": "Black Angus Skewers", "ant.skewers.qty": "5 pieces / 10 pieces",
+    "ant.board.pasture": "The Pasture Corner", "ant.board.pasture.desc": "Charcuterie board (San Daniele prosciutto aged 24 months, Patanegra lard, Parma coppa, Varzi salami) and cheeses (Occelli mixed-milk cheese aged in chestnut leaves, Barolo wine, barley malt and whisky, grappa with fruit) served with fried dough",
+    "ant.board.cheese": "Cheese Board Tasting", "ant.board.cheese.desc": "Aged selection (Occelli mixed-milk cheese aged in chestnut leaves, Barolo wine, barley malt and whisky, grappa with fruit) served with fried dough and jams on request",
+    "ant.board.charc": "Charcuterie Board Tasting", "ant.board.charc.desc": "Selection of cured meats (San Daniele prosciutto aged 24 months, Patanegra lard, Parma coppa, Varzi salami) with fried dough",
+    "primi.intro": "Fresh pasta strictly handmade by us",
+    "primi.scrigno": "Veal Treasure Chest", "primi.scrigno.desc": "Pasta filled with veal, served with butter and sage",
+    "primi.tagliatelle": "Shepherds' Tagliatelle", "primi.tagliatelle.desc": "Fresh pasta with white beef ragù",
+    "primi.carnaroli": "Carnaroli with Braised Beef", "primi.carnaroli.desc": "Carnaroli rice creamed with butter and parmesan, with strips of beef",
+    "primi.veggie": "For veggie/vegan options, please ask the staff",
+    "tagli.title": "Cuts to Share", "tagli.intro": "For a unique culinary experience",
+    "tagli.king": "THE KING", "tagli.king.cut": "Irish Tomahawk", "tagli.queen": "THE QUEEN", "tagli.queen.cut": "Fiorentina T-Bone", "tagli.from1kg": "from 1 Kg",
+    "sec2.intro": "The Realm of Muuuteca",
+    "sec2.prince": "The Irish Prince in two versions", "sec2.prince.pan": "Pan-seared with herbs", "sec2.prince.grill": "Grilled", "sec2.prince.desc": "~200 g fillet with roasted potatoes",
+    "sec2.princess": "The Princess", "sec2.costata": "Rib Steak", "sec2.from600": "from 600 g",
+    "sec2.countess": "The Countess", "sec2.cotoletta": "Bone-in Veal Cutlet",
+    "sec2.duke": "The South American Duke", "sec2.picanha": "Picanha", "sec2.picanha.desc": "~200 g served with chimichurri sauce",
+    "sec2.marchesina": "The South American Marchioness in two versions",
+    "sec2.rucola": "Arugula and Parmesan", "sec2.rucola.desc": "~180 g sliced beef with arugula and parmesan",
+    "sec2.rustica": "Rustic", "sec2.rustica.desc": "~180 g sliced beef with roasted potatoes and green sauce",
+    "sec2.notes": "For a larger portion, please ask the staff<br>For veggie/vegan options, please ask the staff",
+    "side.carrots": "Honey-glazed carrots", "side.roastpot": "Roasted potatoes", "side.fries": "French fries", "side.gnocco": "Fried dough", "side.grillveg": "Grilled vegetables", "side.spinach": "Sautéed spinach with garlic and 'nduja", "side.salad": "Salad",
+    "dolci.title": "MuuuMoments - Desserts",
+    "dolci.tarteletta": "Fresh fruit tartlet", "dolci.pannacotta": "Panna cotta with chocolate sauce and crumble", "dolci.cheesecake": "Tiramisu cheesecake", "dolci.semifreddo": "Lemon semifreddo", "dolci.cake": "Cake cutting", "pp": "/person",
+    "bev.beers": "Our Beers", "bev.keller": "Monchshof Keller Bier unfiltered 0.5L", "bev.pils": "Monchshof Pils Lager 0.50L",
+    "bev.soft": "Soft Drinks", "bev.water": "Still or Sparkling Water 0.50L", "bev.fanta": "Bottled Fanta", "bev.coffee": "Espresso", "bev.coffee.spiked": "Spiked espresso",
+    "bev.cover": "Cover charge €2.5 / person",
+    "amari.title": "Amari & Digestives", "amari.amari": "Amari (Italian bitters)",
+    "grappa.dry": "Dry", "grappa.smooth": "Smooth", "grappa.aged": "Barrel-aged",
+    "all.title": "Allergen Labelling",
+    "all.intro1": "Substantial labelling of allergenic residues is mandatory.",
+    "all.intro2": "The regulation is based on the principle that certain ingredients can cause allergies or intolerances in individuals; therefore, the presence of soy, eggs, crustaceans, nuts, fish, gluten, peanuts, fruit, legumes/soy, peanuts, celery and other cereals must be declared.",
+    "all.regulation": "THE GOVERNING REGULATION IS EU REGULATION No. 1169/2011",
+    "all.heading": "Substances or products causing allergies or intolerances:",
+    "all.1.t": "Cereals containing gluten",
+    "all.1.d": "Namely: wheat, rye, barley, oats, spelt, kamut or their hybridised strains and bread-based products;",
+    "all.1.a": "a) wheat-based glucose syrups, including dextrose (1);",
+    "all.1.b": "b) wheat-based maltodextrins (1);",
+    "all.1.c": "c) barley-based glucose syrups;",
+    "all.1.dd": "d) cereals used to make alcoholic distillates, including agricultural ethyl alcohol.",
+    "all.2": "Crustaceans and products thereof.",
+    "all.3": "Eggs and products thereof.",
+    "all.4.t": "Fish and fish products, except:",
+    "all.4.a": "a) fish gelatin used as a carrier for vitamins and carotenoids;",
+    "all.4.b": "b) fish gelatin or isinglass used as a fining agent in beer and wine.",
+    "all.5": "Peanuts and products thereof.",
+    "all.6.t": "Soybeans and products thereof, except:",
+    "all.6.a": "a) refined soybean oil and fat (1);",
+    "all.6.b": "b) natural mixed tocopherols (E306), natural D-alpha tocopherol, natural D-alpha tocopherol acetate, natural D-alpha tocopherol succinate from soybeans;",
+    "all.6.c": "c) vegetable oils derived from phytosterols and phytosterol esters from soybeans;",
+    "all.6.d": "d) plant stanol ester produced from vegetable-oil sterols from soybeans.",
+    "all.7.t": "Milk and milk products (including lactose), except:",
+    "all.7.a": "a) whey used to make alcoholic distillates, including agricultural ethyl alcohol;",
+    "all.7.b": "b) lactitol.",
+    "all.8.t": "Tree nuts",
+    "all.8.d": "Namely: almonds (Amygdalus communis L.), hazelnuts (Corylus avellana), walnuts (Juglans regia), cashews (Anacardium occidentale), pecan nuts (Carya illinoinensis (Wangenh.) K. Koch), Brazil nuts (Bertholletia excelsa), pistachios (Pistacia vera), macadamia or Queensland nuts (Macadamia ternifolia), and products thereof, except for nuts used to make alcoholic distillates, including agricultural ethyl alcohol.",
+    "all.9": "Celery and products thereof.",
+    "all.10": "Mustard and products thereof.",
+    "all.11": "Sesame seeds and products thereof.",
+    "all.12.t": "Sulphur dioxide and sulphites",
+    "all.12.d": "In concentrations of more than 10 mg/kg or 10 mg/litre in terms of total SO2, calculated for products as proposed ready for consumption or as reconstituted according to the manufacturer's instructions.",
+    "all.13": "Lupin and products thereof.",
+    "all.14": "Molluscs and products thereof.",
+    "all.footer": "REGULATION (EU) No 1169/2011 of 25 October 2011 — ANNEX II",
+    "footer.tagline": "The essence of meat, the spirit of wine in Pavia.",
+    "footer.copy": "© 2024 MuuuTeca. All rights reserved."
+  }
+};
+
+function applyLanguage(lang) {
+  if (!I18N[lang]) lang = 'it';
+  var dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] != null) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-html');
+    if (dict[key] != null) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll('.lang-pill').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+  try { localStorage.setItem('muuuteca.lang', lang); } catch (e) {}
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   document.body.classList.add('loaded');
   AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+  var saved = 'it';
+  try { saved = localStorage.getItem('muuuteca.lang') || 'it'; } catch (e) {}
+  applyLanguage(saved);
+  document.querySelectorAll('.lang-pill').forEach(function(b) {
+    b.addEventListener('click', function() { applyLanguage(b.getAttribute('data-lang')); });
+  });
 });
 </script>
 </body>
