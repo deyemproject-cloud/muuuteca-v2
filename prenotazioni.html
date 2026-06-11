@@ -278,12 +278,41 @@ var WEEKEND_SLOTS = {
   '1° turno': ['19:00', '19:15', '19:30'],
   '2° turno': ['21:00', '21:15', '21:30', '21:45', '22:00', '22:15', '22:30'],
 };
-// Servizi disattivati per date specifiche (YYYY-MM-DD -> elenco gruppi da bloccare)
+// Servizi disattivati per date specifiche (YYYY-MM-DD -> elenco gruppi da bloccare).
+// Mappa statica di fallback; viene sovrascritta dal CRM (pagina Impostazioni)
+// tramite l'endpoint pubblico di disponibilità.
 var BLOCKED_SLOTS = {
   '2026-06-01': ['Pranzo'],
   '2026-06-16': ['Cena'],
   '2026-06-17': ['Cena'],
 };
+
+// Il CRM blocca per servizio ('Pranzo'/'Cena'); il form weekend usa gruppi
+// '1° turno'/'2° turno' per la cena: espandi 'Cena' in entrambi.
+function expandServices(services) {
+  if (!services || services.length === 0) return ['Pranzo', 'Cena', '1° turno', '2° turno'];
+  var out = [];
+  services.forEach(function(s) {
+    out.push(s);
+    if (s === 'Cena') { out.push('1° turno'); out.push('2° turno'); }
+  });
+  return out;
+}
+
+fetch('https://muuuteca-crm.vercel.app/api/availability/public')
+  .then(function(r) { return r.ok ? r.json() : null; })
+  .then(function(data) {
+    if (!data) return;
+    // unione: blocchi statici + blocchi dal CRM (il CRM può solo aggiungere)
+    Object.keys(data).forEach(function(date) {
+      var fromCrm = expandServices(data[date]);
+      var existing = BLOCKED_SLOTS[date] || [];
+      BLOCKED_SLOTS[date] = existing.concat(fromCrm.filter(function(s) { return existing.indexOf(s) === -1; }));
+    });
+    var dataInput = document.getElementById('data');
+    if (dataInput) populateTimeSlots(dataInput.value);
+  })
+  .catch(function() { /* fallback: mappa statica */ });
 
 function isWeekend(dateStr) {
   if (!dateStr) return false;
