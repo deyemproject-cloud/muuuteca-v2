@@ -158,6 +158,11 @@ html { scroll-behavior: smooth; }
 <label class="block text-sm font-bold italic mb-2">Note Speciali</label>
 <textarea id="note" rows="4" class="w-full px-4 py-3 rounded-lg kinetic-italic" placeholder="Allergie, occasioni speciali, richieste particolari..."></textarea>
 </div>
+<!-- honeypot anti-spam: invisibile agli utenti, i bot lo compilano -->
+<div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+<label for="website">Website</label>
+<input id="website" type="text" name="website" tabindex="-1" autocomplete="off">
+</div>
 <div id="slot-notice" class="hidden rounded-xl px-4 py-3 text-sm font-medium italic text-center bg-[#c9a961]/10 text-[#c9a961] border border-[#c9a961]/30"></div>
 <div id="form-message" class="hidden rounded-xl px-4 py-3 text-sm font-medium italic text-center"></div>
 <button id="submit-btn" type="submit" class="w-full bronze-gradient text-[#241a00] px-8 py-4 rounded-full font-bold italic text-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
@@ -361,7 +366,7 @@ async function submitBooking(e) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-Key': 'muuuteca-crm-secret-f3a8b91c4d7e2026',
+        'X-API-Key': 'muuuteca-pub-e9d982fb775bc7b797c8eff763be2210',
       },
       body: JSON.stringify({
         customer_name: nome + ' ' + cognome,
@@ -370,8 +375,17 @@ async function submitBooking(e) {
         date: data,
         time: ora,
         special_requests: note || null,
+        website: document.getElementById('website').value || null,
       }),
     });
+
+    if (res.status === 429) {
+      msg.className = 'rounded-xl px-4 py-3 text-sm font-medium italic text-center bg-amber-900/30 text-amber-400 border border-amber-500/20';
+      msg.textContent = 'Troppe richieste in poco tempo. Riprova tra qualche minuto o chiamaci al 339 27 34159.';
+      btn.innerHTML = '<span class="material-symbols-outlined text-xl">event_available</span> Prenota ora';
+      btn.disabled = false;
+      return;
+    }
 
     if (res.ok) {
       msg.className = 'rounded-xl px-4 py-3 text-sm font-medium italic text-center bg-green-900/30 text-green-400 border border-green-500/20';
